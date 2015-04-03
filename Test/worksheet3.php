@@ -70,7 +70,7 @@
             <div class="control-group" name="major1"id="major1">
               <label id="controls"><h4><?php query_MyCourses_major1() ?></h4></label>
               <div class="controls">
-          <?php query_MyCourses_major1_level1() ?>
+          <?php level3() ?>
               </div>
             </div>
       <script>
@@ -99,7 +99,7 @@
             <div class="control-group" name="special" id="special">
               <label id="controls3"><h4><?php query_MyCourses_special() ?></h4></label>
               <div class="controls">
-          <?php query_MyCourses_special_level1() ?>
+          <?php level3() ?>
               </div>
             </div>
       <script>

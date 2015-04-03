@@ -1,6 +1,6 @@
 <?php
 	include_once 'db_setup.php';
-	include_once 'queries.php';
+	//include_once 'queries.php';
 
 	
 	function connect()
@@ -52,61 +52,654 @@
 		}
 	}
 	
-	function query_MyCourses_major1_semester1_level1()
+	function query_MyCourses_major2()
 	{
 		$id = $_SESSION['stid'];
 		$myData = mysql_query("SELECT * FROM student where stid='$id'");
 		while($record = mysql_fetch_array($myData))
 		{
-						if (major1()) 
-						{
-							include 'mydegree.php';
-						}
-										
-						else
-					{
-						if($record['program']=="INFORMATION TECHNOLOGY"){
-						$myData2 = mysql_query("SELECT c_name, c_code FROM it WHERE semester = 1 AND c_level = 1");
-						$myData3 = mysql_query("SELECT c_name, c_code FROM it WHERE semester = 2 AND c_level = 1");
-						 include 'mydegree.php';
-						
-						
-						}
-						else
-						{
-						if($record['program']=="COMPUTER STUDIES"){
-						$myData2 = mysql_query("SELECT c_name, c_code FROM compstudies WHERE semester = 1 AND c_level = 1");
-						$myData3 = mysql_query("SELECT c_name, c_code FROM compstudies WHERE semester = 2 AND c_level = 1");
-						?>
-						<table style="width: 100%">
-								<tr>
-								<td style="text-align: center"><b>Semester I</b></td>
-								<td style="text-align: center"><b>Semester II</b></td>
-								</tr>
-								<tr>
-								<td>
-								<?php while($record2 = mysql_fetch_array($myData2)){
-									echo '<option value="'.$record2['c_name'].'">'.$record2['c_code'].' '.$record2['c_name'].'</option>';
-								}
-								?></td>
-								<td>
-								<?php while($record3 = mysql_fetch_array($myData3)){
-									echo '<option value="'.$record3['c_name'].'">'.$record3['c_code'].' '.$record3['c_name'].'</option>';
-								}
-								?></td>
-								<tr style="vertical-align: top">
-								<td>
-									<p style="color: blue">Total Credits Semester I: </p>
-								</td>
-				
-								<td>
-									<p style="color: blue">Total Credits Semester II: </p>
-								</td>
-						</table>
-							<?php
-						}
-						}
-					}
+			echo '<option value="'.$record['major2'].'">'.$record['major2'].'</option>';
 		}
 	}
+
+	function query_MyCourses_minor1()
+	{
+		$id = $_SESSION['stid'];
+		$myData = mysql_query("SELECT * FROM student where stid='$id'");
+		while($record = mysql_fetch_array($myData))
+		{
+			echo '<option value="'.$record['minor1'].'">'.$record['minor1'].'</option>';
+		}
+	}
+
+
+	function query_MyCourses_major1_level1()
+	{
+		$id = $_SESSION['stid'];
+		$myData = mysql_query("SELECT * FROM student where stid='$id'");
+		while($record = mysql_fetch_array($myData))
+		{
+			if($record['major1']=="COMPUTER SCIENCE")
+			{
+				$myData2 = mysql_query("SELECT c_name, c_code FROM computerscience WHERE semester = 1 AND c_level = 1");
+				$myData3 = mysql_query("SELECT c_name, c_code FROM computerscience WHERE semester = 2 AND c_level = 1");
+				include 'mydegree.php';
+
+			}
+
+		
+
+			elseif($record['major1']=="BIOCHEMISTRY")
+			{
+				$myData2 = mysql_query("SELECT c_name, c_code FROM computerscience WHERE semester = 1 AND c_level = 1");
+				$myData3 = mysql_query("SELECT c_name, c_code FROM computerscience WHERE semester = 2 AND c_level = 1");
+				include 'mydegree.php';
+			}
+			
+
+			elseif($record['major1']=="BIOTECHNOLOGY")
+			{
+				$myData2 = mysql_query("SELECT c_name, c_code FROM computerscience WHERE semester = 1 AND c_level = 1");
+				$myData3 = mysql_query("SELECT c_name, c_code FROM computerscience WHERE semester = 2 AND c_level = 1");
+				
+			}
+			
+
+			elseif($record['major1']=="MICROBIOLOGY")
+			{
+				$myData2 = mysql_query("SELECT c_name, c_code FROM computerscience WHERE semester = 1 AND c_level = 1");
+				$myData3 = mysql_query("SELECT c_name, c_code FROM computerscience WHERE semester = 2 AND c_level = 1");
+				include 'mydegree.php';
+			}
+			
+
+			elseif($record['major1']=="MOLECULAR BIOLOGY")
+			{
+				$myData2 = mysql_query("SELECT c_name, c_code FROM computerscience WHERE semester = 1 AND c_level = 1");
+				$myData3 = mysql_query("SELECT c_name, c_code FROM computerscience WHERE semester = 2 AND c_level = 1");
+				include 'mydegree.php';
+			}
+			
+
+			elseif($record['major1']=="APPLIED CHEMISTRY")
+			{
+				$myData2 = mysql_query("SELECT c_name, c_code FROM computerscience WHERE semester = 1 AND c_level = 1");
+				$myData3 = mysql_query("SELECT c_name, c_code FROM computerscience WHERE semester = 2 AND c_level = 1");
+				include 'mydegree.php';
+			}
+
+			
+			 
+			elseif($record['major1']=="GENERAL CHEMISTRY")
+			{
+				$myData2 = mysql_query("SELECT c_name, c_code FROM computerscience WHERE semester = 1 AND c_level = 1");
+				$myData3 = mysql_query("SELECT c_name, c_code FROM computerscience WHERE semester = 2 AND c_level = 1");
+				include 'mydegree.php';
+			}
+
+			
+			 
+			elseif($record['major1']=="ENVIRONMENTAL CHEMISTRY")
+			{
+				$myData2 = mysql_query("SELECT c_name, c_code FROM computerscience WHERE semester = 1 AND c_level = 1");
+				$myData3 = mysql_query("SELECT c_name, c_code FROM computerscience WHERE semester = 2 AND c_level = 1");
+				include 'mydegree.php';
+			}
+			
+			 
+			elseif($record['major1']=="FOOD CHEMISTRY")
+			{
+				$myData2 = mysql_query("SELECT c_name, c_code FROM computerscience WHERE semester = 1 AND c_level = 1");
+				$myData3 = mysql_query("SELECT c_name, c_code FROM computerscience WHERE semester = 2 AND c_level = 1");
+				include 'mydegree.php';
+			}
+			
+			 
+			elseif($record['major1']=="SOFTWARE ENGINEERING")
+			{
+				$myData2 = mysql_query("SELECT c_name, c_code FROM computerscience WHERE semester = 1 AND c_level = 1");
+				$myData3 = mysql_query("SELECT c_name, c_code FROM computerscience WHERE semester = 2 AND c_level = 1");
+				include 'mydegree.php';
+			}
+			
+			 
+			elseif($record['major1']=="GEOGRAPHY")
+			{
+				$myData2 = mysql_query("SELECT c_name, c_code FROM computerscience WHERE semester = 1 AND c_level = 1");
+				$myData3 = mysql_query("SELECT c_name, c_code FROM computerscience WHERE semester = 2 AND c_level = 1");
+				include 'mydegree.php';
+			}
+			
+			 
+			elseif($record['major1']=="GEOLOGY")
+			{
+				$myData2 = mysql_query("SELECT c_name, c_code FROM computerscience WHERE semester = 1 AND c_level = 1");
+				$myData3 = mysql_query("SELECT c_name, c_code FROM computerscience WHERE semester = 2 AND c_level = 1");
+				include 'mydegree.php';
+			}
+
+			
+			 
+			elseif($record['major1']=="ELECTRONICS")
+			{
+				$myData2 = mysql_query("SELECT c_name, c_code FROM physicsdept WHERE semester = 1 AND c_level = 1");
+				$myData3 = mysql_query("SELECT c_name, c_code FROM physicsdept WHERE semester = 2 AND c_level = 1");
+				include 'mydegree.php';
+			}
+			
+			 
+			elseif($record['major1']=="ENERGY AND ENVIRONMENTAL PHYSICS")
+			{
+				$myData2 = mysql_query("SELECT c_name, c_code FROM physicsdept WHERE semester = 1 AND c_level = 1");
+				$myData3 = mysql_query("SELECT c_name, c_code FROM physicsdept WHERE semester = 2 AND c_level = 1");
+				include 'mydegree.php';
+			}
+			
+			 
+			elseif($record['major1']=="GENERAL PHYSICS")
+			{
+				$myData2 = mysql_query("SELECT c_name, c_code FROM physicsdept WHERE semester = 1 AND c_level = 1");
+				$myData3 = mysql_query("SELECT c_name, c_code FROM physicsdept WHERE semester = 2 AND c_level = 1");
+				include 'mydegree.php';
+			}
+			
+			 
+			elseif($record['major1']=="MATERIALS SCIENCE")
+			{
+				$myData2 = mysql_query("SELECT c_name, c_code FROM physicsdept WHERE semester = 1 AND c_level = 1");
+				$myData3 = mysql_query("SELECT c_name, c_code FROM physicsdept WHERE semester = 2 AND c_level = 1");
+				include 'mydegree.php';
+			}
+			
+			 
+			elseif($record['major1']=="MEDICAL PHYSICS")
+			{
+				$myData2 = mysql_query("SELECT c_name, c_code FROM physicsdept WHERE semester = 1 AND c_level = 1");
+				$myData3 = mysql_query("SELECT c_name, c_code FROM physicsdept WHERE semester = 2 AND c_level = 1");
+				include 'mydegree.php';
+			}
+			
+			 
+			elseif($record['major1']=="MATHEMATICS")
+			{
+				$myData2 = mysql_query("SELECT c_name, c_code FROM computerscience WHERE semester = 1 AND c_level = 1");
+				$myData3 = mysql_query("SELECT c_name, c_code FROM computerscience WHERE semester = 2 AND c_level = 1");
+				include 'mydegree.php';
+			}
+			
+			 
+			elseif($record['major1']=="MATHEMATICS AND MODELLING PROCESSES(DOUBLE")
+			{
+				$myData2 = mysql_query("SELECT c_name, c_code FROM computerscience WHERE semester = 1 AND c_level = 1");
+				$myData3 = mysql_query("SELECT c_name, c_code FROM computerscience WHERE semester = 2 AND c_level = 1");
+				include 'mydegree.php';
+			}
+
+			
+			 
+			elseif($record['major1']=="ANIMAL BIOLOGY")
+			{
+				$myData2 = mysql_query("SELECT c_name, c_code FROM computerscience WHERE semester = 1 AND c_level = 1");
+				$myData3 = mysql_query("SELECT c_name, c_code FROM computerscience WHERE semester = 2 AND c_level = 1");
+				include 'mydegree.php';
+			}
+
+			
+			 
+			elseif($record['major1']=="PLANT BIOLOGY")
+			{
+				$myData2 = mysql_query("SELECT c_name, c_code FROM computerscience WHERE semester = 1 AND c_level = 1");
+				$myData3 = mysql_query("SELECT c_name, c_code FROM computerscience WHERE semester = 2 AND c_level = 1");
+				include 'mydegree.php';
+			}
+
+			
+			 
+			elseif($record['major1']=="HORTICULTURE")
+			{
+				$myData2 = mysql_query("SELECT c_name, c_code FROM computerscience WHERE semester = 1 AND c_level = 1");
+				$myData3 = mysql_query("SELECT c_name, c_code FROM computerscience WHERE semester = 2 AND c_level = 1");
+				include 'mydegree.php';
+			}
+			
+			 
+			elseif($record['major1']=="MARINE BIOLOGY")
+			{
+				$myData2 = mysql_query("SELECT c_name, c_code FROM computerscience WHERE semester = 1 AND c_level = 1");
+				$myData3 = mysql_query("SELECT c_name, c_code FROM computerscience WHERE semester = 2 AND c_level = 1");
+				include 'mydegree.php';
+			}
+
+			 
+			elseif($record['major1']=="TERRESTRIAL AND FRESHWATER ECOLOGY")
+			{
+				$myData2 = mysql_query("SELECT c_name, c_code FROM computerscience WHERE semester = 1 AND c_level = 1");
+				$myData3 = mysql_query("SELECT c_name, c_code FROM computerscience WHERE semester = 2 AND c_level = 1");
+				include 'mydegree.php';
+			}
+
+		}
+
+		
+	}
+
+
+	function level2()
+	{
+		$id = $_SESSION['stid'];
+		$myData = mysql_query("SELECT * FROM student where stid='$id'");
+		while($record = mysql_fetch_array($myData))
+		{
+			if($record['major1']=="COMPUTER SCIENCE")
+			{
+				$myData2 = mysql_query("SELECT c_name, c_code FROM computerscience WHERE semester = 1 AND c_level = 2");
+				$myData3 = mysql_query("SELECT c_name, c_code FROM computerscience WHERE semester = 2 AND c_level = 2");
+				include 'mydegree.php';
+
+			}
+
+		
+
+			elseif($record['major1']=="BIOCHEMISTRY")
+			{
+				$myData2 = mysql_query("SELECT c_name, c_code FROM computerscience WHERE semester = 1 AND c_level = 2");
+				$myData3 = mysql_query("SELECT c_name, c_code FROM computerscience WHERE semester = 2 AND c_level = 2");
+				include 'mydegree.php';
+			}
+			
+
+			elseif($record['major1']=="BIOTECHNOLOGY")
+			{
+				$myData2 = mysql_query("SELECT c_name, c_code FROM computerscience WHERE semester = 1 AND c_level = 2");
+				$myData3 = mysql_query("SELECT c_name, c_code FROM computerscience WHERE semester = 2 AND c_level = 2");
+				
+			}
+			
+
+			elseif($record['major1']=="MICROBIOLOGY")
+			{
+				$myData2 = mysql_query("SELECT c_name, c_code FROM computerscience WHERE semester = 1 AND c_level = 2");
+				$myData3 = mysql_query("SELECT c_name, c_code FROM computerscience WHERE semester = 2 AND c_level = 2");
+				include 'mydegree.php';
+			}
+			
+
+			elseif($record['major1']=="MOLECULAR BIOLOGY")
+			{
+				$myData2 = mysql_query("SELECT c_name, c_code FROM computerscience WHERE semester = 1 AND c_level = 2");
+				$myData3 = mysql_query("SELECT c_name, c_code FROM computerscience WHERE semester = 2 AND c_level = 2");
+				include 'mydegree.php';
+			}
+			
+
+			elseif($record['major1']=="APPLIED CHEMISTRY")
+			{
+				$myData2 = mysql_query("SELECT c_name, c_code FROM computerscience WHERE semester = 1 AND c_level = 2");
+				$myData3 = mysql_query("SELECT c_name, c_code FROM computerscience WHERE semester = 2 AND c_level = 2");
+				include 'mydegree.php';
+			}
+
+			
+			 
+			elseif($record['major1']=="GENERAL CHEMISTRY")
+			{
+				$myData2 = mysql_query("SELECT c_name, c_code FROM computerscience WHERE semester = 1 AND c_level = 2");
+				$myData3 = mysql_query("SELECT c_name, c_code FROM computerscience WHERE semester = 2 AND c_level = 2");
+				include 'mydegree.php';
+			}
+
+			
+			 
+			elseif($record['major1']=="ENVIRONMENTAL CHEMISTRY")
+			{
+				$myData2 = mysql_query("SELECT c_name, c_code FROM computerscience WHERE semester = 1 AND c_level = 2");
+				$myData3 = mysql_query("SELECT c_name, c_code FROM computerscience WHERE semester = 2 AND c_level = 2");
+				include 'mydegree.php';
+			}
+			
+			 
+			elseif($record['major1']=="FOOD CHEMISTRY")
+			{
+				$myData2 = mysql_query("SELECT c_name, c_code FROM computerscience WHERE semester = 1 AND c_level = 2");
+				$myData3 = mysql_query("SELECT c_name, c_code FROM computerscience WHERE semester = 2 AND c_level = 2");
+				include 'mydegree.php';
+			}
+			
+			 
+			elseif($record['major1']=="SOFTWARE ENGINEERING")
+			{
+				$myData2 = mysql_query("SELECT c_name, c_code FROM computerscience WHERE semester = 1 AND c_level = 2");
+				$myData3 = mysql_query("SELECT c_name, c_code FROM computerscience WHERE semester = 2 AND c_level = 2");
+				include 'mydegree.php';
+			}
+			
+			 
+			elseif($record['major1']=="GEOGRAPHY")
+			{
+				$myData2 = mysql_query("SELECT c_name, c_code FROM computerscience WHERE semester = 1 AND c_level = 2");
+				$myData3 = mysql_query("SELECT c_name, c_code FROM computerscience WHERE semester = 2 AND c_level = 2");
+				include 'mydegree.php';
+			}
+			
+			 
+			elseif($record['major1']=="GEOLOGY")
+			{
+				$myData2 = mysql_query("SELECT c_name, c_code FROM computerscience WHERE semester = 1 AND c_level = 2");
+				$myData3 = mysql_query("SELECT c_name, c_code FROM computerscience WHERE semester = 2 AND c_level = 2");
+				include 'mydegree.php';
+			}
+
+			
+			 
+			elseif($record['major1']=="ELECTRONICS")
+			{
+				$myData2 = mysql_query("SELECT c_name, c_code FROM physicsdept WHERE semester = 1 AND c_level = 2");
+				$myData3 = mysql_query("SELECT c_name, c_code FROM physicsdept WHERE semester = 2 AND c_level = 2");
+				include 'mydegree.php';
+			}
+			
+			 
+			elseif($record['major1']=="ENERGY AND ENVIRONMENTAL PHYSICS")
+			{
+				$myData2 = mysql_query("SELECT c_name, c_code FROM physicsdept WHERE semester = 1 AND c_level = 2");
+				$myData3 = mysql_query("SELECT c_name, c_code FROM physicsdept WHERE semester = 2 AND c_level = 2");
+				include 'mydegree.php';
+			}
+			
+			 
+			elseif($record['major1']=="GENERAL PHYSICS")
+			{
+				$myData2 = mysql_query("SELECT c_name, c_code FROM physicsdept WHERE semester = 1 AND c_level = 2");
+				$myData3 = mysql_query("SELECT c_name, c_code FROM physicsdept WHERE semester = 2 AND c_level = 2");
+				include 'mydegree.php';
+			}
+			
+			 
+			elseif($record['major1']=="MATERIALS SCIENCE")
+			{
+				$myData2 = mysql_query("SELECT c_name, c_code FROM physicsdept WHERE semester = 1 AND c_level = 2");
+				$myData3 = mysql_query("SELECT c_name, c_code FROM physicsdept WHERE semester = 2 AND c_level = 2");
+				include 'mydegree.php';
+			}
+			
+			 
+			elseif($record['major1']=="MEDICAL PHYSICS")
+			{
+				$myData2 = mysql_query("SELECT c_name, c_code FROM physicsdept WHERE semester = 1 AND c_level = 2");
+				$myData3 = mysql_query("SELECT c_name, c_code FROM physicsdept WHERE semester = 2 AND c_level = 2");
+				include 'mydegree.php';
+			}
+			
+			 
+			elseif($record['major1']=="MATHEMATICS")
+			{
+				$myData2 = mysql_query("SELECT c_name, c_code FROM computerscience WHERE semester = 1 AND c_level = 2");
+				$myData3 = mysql_query("SELECT c_name, c_code FROM computerscience WHERE semester = 2 AND c_level = 2");
+				include 'mydegree.php';
+			}
+			
+			 
+			elseif($record['major1']=="MATHEMATICS AND MODELLING PROCESSES(DOUBLE")
+			{
+				$myData2 = mysql_query("SELECT c_name, c_code FROM computerscience WHERE semester = 1 AND c_level = 2");
+				$myData3 = mysql_query("SELECT c_name, c_code FROM computerscience WHERE semester = 2 AND c_level = 2");
+				include 'mydegree.php';
+			}
+
+			
+			 
+			elseif($record['major1']=="ANIMAL BIOLOGY")
+			{
+				$myData2 = mysql_query("SELECT c_name, c_code FROM computerscience WHERE semester = 1 AND c_level = 2");
+				$myData3 = mysql_query("SELECT c_name, c_code FROM computerscience WHERE semester = 2 AND c_level = 2");
+				include 'mydegree.php';
+			}
+
+			
+			 
+			elseif($record['major1']=="PLANT BIOLOGY")
+			{
+				$myData2 = mysql_query("SELECT c_name, c_code FROM computerscience WHERE semester = 1 AND c_level = 2");
+				$myData3 = mysql_query("SELECT c_name, c_code FROM computerscience WHERE semester = 2 AND c_level = 2");
+				include 'mydegree.php';
+			}
+
+			
+			 
+			elseif($record['major1']=="HORTICULTURE")
+			{
+				$myData2 = mysql_query("SELECT c_name, c_code FROM computerscience WHERE semester = 1 AND c_level = 2");
+				$myData3 = mysql_query("SELECT c_name, c_code FROM computerscience WHERE semester = 2 AND c_level = 2");
+				include 'mydegree.php';
+			}
+			
+			 
+			elseif($record['major1']=="MARINE BIOLOGY")
+			{
+				$myData2 = mysql_query("SELECT c_name, c_code FROM computerscience WHERE semester = 1 AND c_level = 2");
+				$myData3 = mysql_query("SELECT c_name, c_code FROM computerscience WHERE semester = 2 AND c_level = 2");
+				include 'mydegree.php';
+			}
+
+			 
+			elseif($record['major1']=="TERRESTRIAL AND FRESHWATER ECOLOGY")
+			{
+				$myData2 = mysql_query("SELECT c_name, c_code FROM computerscience WHERE semester = 1 AND c_level = 2");
+				$myData3 = mysql_query("SELECT c_name, c_code FROM computerscience WHERE semester = 2 AND c_level = 2");
+				include 'mydegree.php';
+			}
+
+		}
+	}
+
+
+	function level3()
+	{
+		$id = $_SESSION['stid'];
+		$myData = mysql_query("SELECT * FROM student where stid='$id'");
+		while($record = mysql_fetch_array($myData))
+		{
+			if($record['major1']=="COMPUTER SCIENCE")
+			{
+				$myData2 = mysql_query("SELECT c_name, c_code FROM computerscience WHERE semester = 1 AND c_level = 3");
+				$myData3 = mysql_query("SELECT c_name, c_code FROM computerscience WHERE semester = 2 AND c_level = 3");
+				include 'mydegree.php';
+
+			}
+
+		
+
+			elseif($record['major1']=="BIOCHEMISTRY")
+			{
+				$myData2 = mysql_query("SELECT c_name, c_code FROM computerscience WHERE semester = 1 AND c_level = 3");
+				$myData3 = mysql_query("SELECT c_name, c_code FROM computerscience WHERE semester = 2 AND c_level = 3");
+				include 'mydegree.php';
+			}
+			
+
+			elseif($record['major1']=="BIOTECHNOLOGY")
+			{
+				$myData2 = mysql_query("SELECT c_name, c_code FROM computerscience WHERE semester = 1 AND c_level = 3");
+				$myData3 = mysql_query("SELECT c_name, c_code FROM computerscience WHERE semester = 2 AND c_level = 3");
+				
+			}
+			
+
+			elseif($record['major1']=="MICROBIOLOGY")
+			{
+				$myData2 = mysql_query("SELECT c_name, c_code FROM computerscience WHERE semester = 1 AND c_level = 3");
+				$myData3 = mysql_query("SELECT c_name, c_code FROM computerscience WHERE semester = 2 AND c_level = 3");
+				include 'mydegree.php';
+			}
+			
+
+			elseif($record['major1']=="MOLECULAR BIOLOGY")
+			{
+				$myData2 = mysql_query("SELECT c_name, c_code FROM computerscience WHERE semester = 1 AND c_level = 3");
+				$myData3 = mysql_query("SELECT c_name, c_code FROM computerscience WHERE semester = 2 AND c_level = 3");
+				include 'mydegree.php';
+			}
+			
+
+			elseif($record['major1']=="APPLIED CHEMISTRY")
+			{
+				$myData2 = mysql_query("SELECT c_name, c_code FROM computerscience WHERE semester = 1 AND c_level = 3");
+				$myData3 = mysql_query("SELECT c_name, c_code FROM computerscience WHERE semester = 2 AND c_level = 3");
+				include 'mydegree.php';
+			}
+
+			
+			 
+			elseif($record['major1']=="GENERAL CHEMISTRY")
+			{
+				$myData2 = mysql_query("SELECT c_name, c_code FROM computerscience WHERE semester = 1 AND c_level = 3");
+				$myData3 = mysql_query("SELECT c_name, c_code FROM computerscience WHERE semester = 2 AND c_level = 3");
+				include 'mydegree.php';
+			}
+
+			
+			 
+			elseif($record['major1']=="ENVIRONMENTAL CHEMISTRY")
+			{
+				$myData2 = mysql_query("SELECT c_name, c_code FROM computerscience WHERE semester = 1 AND c_level = 3");
+				$myData3 = mysql_query("SELECT c_name, c_code FROM computerscience WHERE semester = 2 AND c_level = 3");
+				include 'mydegree.php';
+			}
+			
+			 
+			elseif($record['major1']=="FOOD CHEMISTRY")
+			{
+				$myData2 = mysql_query("SELECT c_name, c_code FROM computerscience WHERE semester = 1 AND c_level = 3");
+				$myData3 = mysql_query("SELECT c_name, c_code FROM computerscience WHERE semester = 2 AND c_level = 3");
+				include 'mydegree.php';
+			}
+			
+			 
+			elseif($record['major1']=="SOFTWARE ENGINEERING")
+			{
+				$myData2 = mysql_query("SELECT c_name, c_code FROM computerscience WHERE semester = 1 AND c_level = 3");
+				$myData3 = mysql_query("SELECT c_name, c_code FROM computerscience WHERE semester = 2 AND c_level = 3");
+				include 'mydegree.php';
+			}
+			
+			 
+			elseif($record['major1']=="GEOGRAPHY")
+			{
+				$myData2 = mysql_query("SELECT c_name, c_code FROM computerscience WHERE semester = 1 AND c_level = 3");
+				$myData3 = mysql_query("SELECT c_name, c_code FROM computerscience WHERE semester = 2 AND c_level = 3");
+				include 'mydegree.php';
+			}
+			
+			 
+			elseif($record['major1']=="GEOLOGY")
+			{
+				$myData2 = mysql_query("SELECT c_name, c_code FROM computerscience WHERE semester = 1 AND c_level = 3");
+				$myData3 = mysql_query("SELECT c_name, c_code FROM computerscience WHERE semester = 2 AND c_level = 3");
+				include 'mydegree.php';
+			}
+
+			
+			 
+			elseif($record['major1']=="ELECTRONICS")
+			{
+				$myData2 = mysql_query("SELECT c_name, c_code FROM physicsdept WHERE semester = 1 AND c_level = 3");
+				$myData3 = mysql_query("SELECT c_name, c_code FROM physicsdept WHERE semester = 2 AND c_level = 3");
+				include 'mydegree.php';
+			}
+			
+			 
+			elseif($record['major1']=="ENERGY AND ENVIRONMENTAL PHYSICS")
+			{
+				$myData2 = mysql_query("SELECT c_name, c_code FROM physicsdept WHERE semester = 1 AND c_level = 3");
+				$myData3 = mysql_query("SELECT c_name, c_code FROM physicsdept WHERE semester = 2 AND c_level = 3");
+				include 'mydegree.php';
+			}
+			
+			 
+			elseif($record['major1']=="GENERAL PHYSICS")
+			{
+				$myData2 = mysql_query("SELECT c_name, c_code FROM physicsdept WHERE semester = 1 AND c_level = 3");
+				$myData3 = mysql_query("SELECT c_name, c_code FROM physicsdept WHERE semester = 2 AND c_level = 3");
+				include 'mydegree.php';
+			}
+			
+			 
+			elseif($record['major1']=="MATERIALS SCIENCE")
+			{
+				$myData2 = mysql_query("SELECT c_name, c_code FROM physicsdept WHERE semester = 1 AND c_level = 3");
+				$myData3 = mysql_query("SELECT c_name, c_code FROM physicsdept WHERE semester = 2 AND c_level = 3");
+				include 'mydegree.php';
+			}
+			
+			 
+			elseif($record['major1']=="MEDICAL PHYSICS")
+			{
+				$myData2 = mysql_query("SELECT c_name, c_code FROM physicsdept WHERE semester = 1 AND c_level = 3");
+				$myData3 = mysql_query("SELECT c_name, c_code FROM physicsdept WHERE semester = 2 AND c_level = 3");
+				include 'mydegree.php';
+			}
+			
+			 
+			elseif($record['major1']=="MATHEMATICS")
+			{
+				$myData2 = mysql_query("SELECT c_name, c_code FROM computerscience WHERE semester = 1 AND c_level = 3");
+				$myData3 = mysql_query("SELECT c_name, c_code FROM computerscience WHERE semester = 2 AND c_level = 3");
+				include 'mydegree.php';
+			}
+			
+			 
+			elseif($record['major1']=="MATHEMATICS AND MODELLING PROCESSES(DOUBLE")
+			{
+				$myData2 = mysql_query("SELECT c_name, c_code FROM computerscience WHERE semester = 1 AND c_level = 3");
+				$myData3 = mysql_query("SELECT c_name, c_code FROM computerscience WHERE semester = 2 AND c_level = 3");
+				include 'mydegree.php';
+			}
+
+			
+			 
+			elseif($record['major1']=="ANIMAL BIOLOGY")
+			{
+				$myData2 = mysql_query("SELECT c_name, c_code FROM computerscience WHERE semester = 1 AND c_level = 3");
+				$myData3 = mysql_query("SELECT c_name, c_code FROM computerscience WHERE semester = 2 AND c_level = 3");
+				include 'mydegree.php';
+			}
+
+			
+			 
+			elseif($record['major1']=="PLANT BIOLOGY")
+			{
+				$myData2 = mysql_query("SELECT c_name, c_code FROM computerscience WHERE semester = 1 AND c_level = 3");
+				$myData3 = mysql_query("SELECT c_name, c_code FROM computerscience WHERE semester = 2 AND c_level = 3");
+				include 'mydegree.php';
+			}
+
+			
+			 
+			elseif($record['major1']=="HORTICULTURE")
+			{
+				$myData2 = mysql_query("SELECT c_name, c_code FROM computerscience WHERE semester = 1 AND c_level = 3");
+				$myData3 = mysql_query("SELECT c_name, c_code FROM computerscience WHERE semester = 2 AND c_level = 3");
+				include 'mydegree.php';
+			}
+			
+			 
+			elseif($record['major1']=="MARINE BIOLOGY")
+			{
+				$myData2 = mysql_query("SELECT c_name, c_code FROM computerscience WHERE semester = 1 AND c_level = 3");
+				$myData3 = mysql_query("SELECT c_name, c_code FROM computerscience WHERE semester = 2 AND c_level = 3");
+				include 'mydegree.php';
+			}
+
+			 
+			elseif($record['major1']=="TERRESTRIAL AND FRESHWATER ECOLOGY")
+			{
+				$myData2 = mysql_query("SELECT c_name, c_code FROM computerscience WHERE semester = 1 AND c_level = 3");
+				$myData3 = mysql_query("SELECT c_name, c_code FROM computerscience WHERE semester = 2 AND c_level = 3");
+				include 'mydegree.php';
+			}
+
+		}
+	}
+
+
 ?>	

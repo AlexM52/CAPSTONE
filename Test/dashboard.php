@@ -21,7 +21,7 @@
 <!-- Header -->
   <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
         <?php include 'navbar.php';?>
-    </nav>
+  </nav>
 <!-- /Header -->
 <h3><i class="glyphicon glyphicon-briefcase"></i> Start Below</h3>
       <hr>
@@ -36,7 +36,7 @@
       <hr>
       
       <ul class="nav nav-stacked">
-        <li><a href="highschool.php;"><i class="glyphicon glyphicon-flash"></i> Before You Plan</a></li>
+        <li><a href="cxc.php"><i class="glyphicon glyphicon-flash"></i> Before You Plan</a></li>
         <li><a href="majors.php"><i class="glyphicon glyphicon-flash"></i> Choose Your Major/Minor</a></li>
         <li><a href="worksheet.php"><i class="glyphicon glyphicon-link"></i> Year 1</a></li>
         <li><a href="javascript:;"><i class="glyphicon glyphicon-list-alt"></i> Year 2</a></li>

@@ -18,7 +18,7 @@ session_start();
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" href="http://getbootstrap.com/favicon.ico">
+    
 
     <title>UWI Mona Student Adviser</title>
 
@@ -70,23 +70,14 @@ session_start();
 
 		          </ul>
 		        </li>
-		            <?php
-                    }else{
-                    ?>
-                    <li class="dropdown">
-		          <a class="dropdown-toggle" role="button" data-toggle="dropdown" href="">
-		            <i class="glyphicon glyphicon-user"></i> <?php echo $_SESSION['fname']; ?> <span class="caret"></span></a>
-		          <ul id="g-account-menu" class="dropdown-menu" role="menu">
-		            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Settings</a></li>
-                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Logout</a></li>
-		          </ul>
-		        </li>
-                    <?php
-                    }
-                    ?>
+		            
+                   
+		            
+		          
+		        
                   <!--  <li class="active"><a href="./Cover Template for Bootstrap_files/Cover Template for Bootstrap.html">Log In</a></li> -->
-                  <li><a href="about.html">About</a></li>
-                  <li><a href="faqs.html">FAQ's</a></li>
+                  <li><a href="about.php">About</a></li>
+                  <li><a href="faqs.php">FAQ's</a></li>
                 </ul>
               </nav>
             </div>

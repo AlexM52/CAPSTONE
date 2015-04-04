@@ -1,3 +1,8 @@
+<?php
+  //include_once 'function.php';
+  session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -14,39 +19,12 @@
 	</head>
 	<body>
 <!-- Header -->
-<div id="top-nav" class="navbar navbar-inverse navbar-static-top">
-  <div class="container">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-          <span class="icon-toggle"></span>
-      </button>
-      <a class="navbar-brand" href="#">Student Course Advisor</a>
-    </div>
-    <div class="navbar-collapse collapse">
-      <ul class="nav navbar-nav">
-          <li>
-              <a href="#">About</a>
-          </li>
-          <li>
-              <a href="#">FAQ's</a>
-          </li>
-          <li>
-              <a href="#">Contact</a>
-          </li>  
-        <li class="dropdown">
-          <a class="dropdown-toggle" role="button" data-toggle="dropdown" href="#">
-            <i class="glyphicon glyphicon-user"></i> <?php echo $_SESSION["fname"]?>  <?php echo $_SESSION["lname"];?><span class="caret"></span></a>
-          <ul id="g-account-menu" class="dropdown-menu" role="menu">
-            <li><a href="#">My Profile</a></li>
-            <li><a href="#"><i class="glyphicon glyphicon-lock"></i> Logout</a></li>
-          </ul>
-        </li>
-      </ul>
-    </div>
-  </div><!-- /container -->
-</div>
+  <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <?php include 'navbar.php';?>
+  </nav>
 <!-- /Header -->
-
+<h3><i class="glyphicon glyphicon-briefcase"></i> Start Below</h3>
+      <hr>
 <!-- Main -->
 <div class="container">
   
@@ -58,9 +36,9 @@
       <hr>
       
       <ul class="nav nav-stacked">
-        <li><a href="highschool.php;"><i class="glyphicon glyphicon-flash"></i> Before You Plan</a></li>
+        <li><a href="cxc.php"><i class="glyphicon glyphicon-flash"></i> Before You Plan</a></li>
         <li><a href="majors.php"><i class="glyphicon glyphicon-flash"></i> Choose Your Major/Minor</a></li>
-        <li><a href="javascript:;"><i class="glyphicon glyphicon-link"></i> Year 1</a></li>
+        <li><a href="worksheet.php"><i class="glyphicon glyphicon-link"></i> Year 1</a></li>
         <li><a href="javascript:;"><i class="glyphicon glyphicon-list-alt"></i> Year 2</a></li>
         <li><a href="javascript:;"><i class="glyphicon glyphicon-book"></i> Year 3</a></li>
         <li><a href="javascript:;"><i class="glyphicon glyphicon-briefcase"></i> Year 4+</a></li>
@@ -77,28 +55,7 @@
        <hr>
       
      <div class="row">
-            <div class="col-sm-4">
-                <img class="img-circle img-responsive img-center" src="http://placehold.it/100x100" alt="">
-                <h2>Year 1</h2>
-                <p>New to the UWI Mona? Click here to start plan your entire degree from start to finish!</p>
-            </div>
-            <div class="col-sm-4">
-                <img class="img-circle img-responsive img-center" src="http://placehold.it/100x100" alt="">
-                <h2>Year 2</h2>
-                <p>Need to know what do next? Click here for suggestions on your advanced level courses.</p>
-            </div>
-            <div class="col-sm-4">
-                <img class="img-circle img-responsive img-center" src="http://placehold.it/100x100" alt="">
-                <h2>Year 3</h2>
-                <p>Almost finish! Make sure you are not left behind. Click here to ensure you have fufilled all your requirementss</p>
-            </div>
-            <div class="col-sm-4">
-                <img class="img-circle img-responsive img-center" src="http://placehold.it/100x100" alt="">
-                <h2>Year 4+</h2>
-                <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.</p>
-            </div>
-        </div>
-         
+           
           
      
        </div><!--/row-->

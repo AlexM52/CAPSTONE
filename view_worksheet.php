@@ -50,7 +50,7 @@
     <div class="col-sm-9" >
         
       <!-- column 2 --> 
-       <h3><i class="glyphicon glyphicon-education"></i> Here are some suggestions.</h3>  
+       <h3><i class="glyphicon glyphicon-education"></i> Your Selected Courses.</h3>  
             
        <hr>
      
@@ -58,13 +58,12 @@
         <div class="panel-heading">
           <div class="panel-title">
             <i class="glyphicon glyphicon-wrench pull-right"></i>
-      <p>Please take into consideration that these are merely suggestions. You have the right to accept or decline our advice. In addition, pay 
-      keen attention to the credit limits for each semester.</p>
+      <p>Ensure that the courses you have registered for equates to the correct amount of credits for each semester.</p>
           </div>
         </div>
         <div class="panel-body">
           
-         <form class="form form-vertical" method="post" action="selected_courses.php">
+          <form class="form form-vertical">
             <div class="control-group" name="major1"id="major1">
               <label id="controls"><h4><?php query_MyCourses_major1() ?></h4></label>
               <div class="controls">

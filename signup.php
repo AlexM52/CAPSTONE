@@ -52,9 +52,10 @@
 
 <div class="row">
     <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
-    <form role="form" action="sign.php">
+    <form role="form" method ="post" action="sign.php">
       <h2>Please Sign Up <small>It's free and always will be.</small></h2>
       <hr class="colorgraph">
+      
       <div class="row">
         <div class="col-xs-12 col-sm-6 col-md-6">
           <div class="form-group">
@@ -76,18 +77,39 @@
             <input type="text" name="studentid" id="studentid" class="form-control input-lg" placeholder="Student Id" tabindex="3">
           </div>
         </div>
+        <div class="col-xs-12 col-sm-6 col-md-6">
+          <div class="form-group"> 
+            <div class="controls">
+              <select class="form-control" name="faculty">
+              <option selected>----Select Faculty-----</option>
+              <option>Humanities and Education</option>
+              <option>Science and Technology</option>
+              <option>Social Sciences</option>
+              </select>
+            </div>
+          </div>
+        </div>
       </div>
 
       <div class="row">
-        <div class="col-xs-4 col-sm-2 col-md-2">
-          <div class="form-group"> 
-            <div class="controls">
-              <select class="form-control" name="level">
-              <option selected>Level</option>
-              <option>1</option>
-              <option>2</option>
-              <option>3</option>
-              </select>
+        <div class="col-xs-12 col-sm-6 col-md-6"> 
+          <div class="form-group">
+            <select class="form-control" name="status">
+            <option selected>-----Select Status--------</option>
+            <option>Full Time</option>
+            <option>Part Time</option>
+            </select></br>
+          </div>
+        </div>
+          <div class="col-xs-12 col-sm-6 col-md-6">
+            <div class="form-group"> 
+              <div class="controls">
+                <select class="form-control" name="level">
+                <option selected>----Select Level-----</option>
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                </select>
             </div>
           </div>
         </div>

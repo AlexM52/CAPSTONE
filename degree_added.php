@@ -1,5 +1,6 @@
 <?php
 		//include_once 'function.php';
+		include_once 'db_setup.php';
 		session_start();
 		$Major1 = $_POST["major1"];
 		$Major2 = $_POST["major2"];
@@ -11,13 +12,14 @@
 	
 
     //Connect to the database
-    $host = 'localhost';   //host name
-    $user = 'root';                     //username
-    $pass = '';                                 //password
-    $db = 'capstone';                          //Your database name you want to connect to
+    // $host = '173.194.252.98';   //host name
+    // $user = 'root';                     //username
+    // $pass = 'capstone';                                 //password
+    // $db = 'capstone';                          //Your database name you want to connect to
     //$port = 3306;                               //The port #. <usually 3306>
 
-    $connection = mysqli_connect($host, $user, $pass, $db)or die(mysql_error());
+    $connection = mysql_connect(DB_HOST, DB_USER, DB_PASS) or die('could not connect'.mysql_error());
+    mysql_select_db(DB_NAME);
 	//$db_selected=mysqli_select_db($connection,'SCA');
 
 	$Major1 = mysql_real_escape_string($Major1);
@@ -28,12 +30,12 @@
 
     //check for user
 	$id = $_SESSION['stid'];
-	$query = "UPDATE student set stid='$id', major1='$Major1',major2='$Major2',special='$Special',minor1='$Minor1',minor2='$Minor2',level='$Level',status='$Status' where stid='$id'";
-     $result = mysqli_query($connection, $query);
+	$query = "UPDATE student set stid='$id', major1='$Major1',major2='$Major2',program='$Special',minor1='$Minor1',minor2='$Minor2',level='$Level',status='$Status' where stid='$id'";
+     $result = mysql_query($query);
 
     if($result)
 		{
-			include 'degree.php';
+			include 'worksheet.php';
 		}
 	
 	//header( 'Location: http://localhost/capstone/dashboard.html' ) ;

@@ -5,13 +5,13 @@
 	</tr>
 	<tr>
 	<td>
-	<?php while($record2 = mysql_fetch_array($myData2)){?><input type="checkbox" value= "<?php
+	<?php while($record2 = mysql_fetch_array($myData2)){?><input type="checkbox" value= ""<?php
 		echo '<option value="'.$record2['c_name'].'">'.$record2['c_code'].' '.$record2['c_name'].'</option>';?></br>
 		<?php
 	}
 	?></td>
 	<td>
-	<?php while($record3 = mysql_fetch_array($myData3)){ ?><input type="checkbox" value= "<?php
+	<?php while($record3 = mysql_fetch_array($myData3)){ ?><!--<input type="checkbox" value= ""--><?php
 		echo '<option value="'.$record3['c_name'].'">'.$record3['c_code'].' '.$record3['c_name'].'</option>'; ?>
 		</br>
 		<?php

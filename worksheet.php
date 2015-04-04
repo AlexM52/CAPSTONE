@@ -18,7 +18,7 @@
 			<script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
 		<![endif]-->
 		<link href="css/styles.css" rel="stylesheet">
-		<script src="worksheet.js"></script>
+	
 	</head>
 	<body>
 <!-- Header -->
@@ -68,7 +68,7 @@
           
           <form class="form form-vertical">
             <div class="control-group" name="major1"id="major1">
-              <label id="controls"><h4><?php query_MyCourses_major1() ?></h4></label>
+              <label id="controls"><h4><?php query_MyCourses_major1() ?></h4></label> 
               <div class="controls">
           <?php query_MyCourses_major1_level1() ?>
               </div>
@@ -109,17 +109,18 @@
       </script>
         
       
-            <div class="control-group" name="minor1" id="minor1">
-              <label id="controls4"><h4><?php query_MyCourses_minor1() ?></h4></label>
+        <div class="control-group" name="minor1" id="minor1">
+            <label id="controls4"><h4><?php query_MyCourses_minor1() ?></h4></label>
               <div class="controls">
-          <?php minor1level1 () ?>
+                    <?php minor1level1 () ?>
               </div>
-            </div> 
-      <script>
-        if(document.getElementById('controls4').innerHTML === '<h4><option value="--Select Minor--">--Select Minor--</option></h4>'){
-        document.getElementById('minor1').style.display='none';
-        }
-      </script>
+        </div> 
+     <!--<script>
+      //   if(document.getElementById('controls4').innerHTML === '<h4><option value="--Select Minor--">--Select Minor--</option></h4>')
+      //   {
+      //     document.getElementById('minor1').style.display='none';
+      //   }
+      // </script> -->
       
       <div class="control-group" name="minor2" id="minor2">
               <label id="controls5"><h4><?php query_MyCourses_minor2() ?></h4></label>

@@ -51,7 +51,7 @@
 			<div class="control-group" id="minor2group" style="display: none;">
 				<label>2nd Minor:</label>
 				<div class="controls">
-					<select class="form-control" name="minor2" id="minor1">
+					<select class="form-control" name="minor2" id="minor2">
 					<option selected>--Select Minor--</option>
 						<?php query_minors()?>
 					</select></br>

@@ -54,7 +54,7 @@ session_start();
               <nav>
                 <ul class="nav masthead-nav">
                     <?php
-                    if (!isset($_SESSION['id'])){
+                    if (!isset($_SESSION['stid'])){
                     ?>
                   <li class="dropdown">
 		          <a class="dropdown-toggle" role="button" data-toggle="dropdown" href="">
@@ -70,6 +70,22 @@ session_start();
 
 		          </ul>
 		        </li>
+          <?php
+          }
+          else{
+            ?>
+            <li class="dropdown">
+              <a class= "dropdown-toggle" role="button" data-toggle="dropdown" href="">
+                <i class="glyphicon glyphicon-user"></i> <?php echo $_SESSION['fname']; ?> <scan class="caret">
+                <ul id="g-account-menu" class="dropdown-menu" role="menu">
+                  <li role="presentation"><a role="menuitem" tabindex="-1" href="dashboard.php">Dashboard</a></li>
+              <li role="presentation"><a role="menuitem" tabindex="-1" href="logout.php">Logout</a></li>
+            </ul>
+          </li>
+          <?php
+          }
+        ?>
+
 		            
                    
 		            

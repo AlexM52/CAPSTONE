@@ -9,7 +9,7 @@
 	<head>
 		<meta http-equiv="content-type" content="text/html; charset=UTF-8">
 		<meta charset="utf-8">
-		<title>Dashboard</title>
+		<title>Before You Start</title>
 		<meta name="generator" content="Bootply" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 		<link href="css/bootstrap.min.css" rel="stylesheet">
@@ -39,10 +39,11 @@
       <ul class="nav nav-stacked">
         <li><a href="highschool.php"><i class="glyphicon glyphicon-flash"></i> Before You Plan</a></li>
         <li><a href="majors.php"><i class="glyphicon glyphicon-flash"></i> Choose Your Major/Minor</a></li>
+        <li><a href="interests.php"><i class="glyphicon glyphicon-flash"></i> State Your Interests</a></li>
         <li><a href="worksheet.php"><i class="glyphicon glyphicon-link"></i> Year 1</a></li>
-        <li><a href="javascript:;"><i class="glyphicon glyphicon-list-alt"></i> Year 2</a></li>
-        <li><a href="javascript:;"><i class="glyphicon glyphicon-book"></i> Year 3</a></li>
-        <li><a href="javascript:;"><i class="glyphicon glyphicon-briefcase"></i> Year 4+</a></li>
+        <li><a href="worksheet2.php"><i class="glyphicon glyphicon-list-alt"></i> Year 2</a></li>
+        <li><a href="worksheet3.php"><i class="glyphicon glyphicon-book"></i> Year 3</a></li>
+        <li><a href="worksheet4.php"><i class="glyphicon glyphicon-briefcase"></i> Year 4+</a></li>
       </ul>
       
       <hr>

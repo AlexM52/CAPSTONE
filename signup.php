@@ -11,6 +11,7 @@
 			<script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
 		<![endif]-->
 		<link href="css/styles.css" rel="stylesheet">
+    <script src="js/signupValidation.js"></script>
 	</head>
 	<body>
 <!-- Header -->
@@ -52,7 +53,7 @@
 
 <div class="row">
     <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
-    <form role="form" method ="post" action="sign.php">
+    <form role="form" method ="post" action="sign.php" onsubmit="return signupValidation(this)">
       <h2>Please Sign Up <small>It's free and always will be.</small></h2>
       <hr class="colorgraph">
       
@@ -80,7 +81,7 @@
         <div class="col-xs-12 col-sm-6 col-md-6">
           <div class="form-group"> 
             <div class="controls">
-              <select class="form-control" name="faculty">
+              <select class="form-control" name="faculty" id="faculty">
               <option selected>----Select Faculty-----</option>
               <option>Humanities and Education</option>
               <option>Science and Technology</option>
@@ -94,7 +95,7 @@
       <div class="row">
         <div class="col-xs-12 col-sm-6 col-md-6"> 
           <div class="form-group">
-            <select class="form-control" name="status">
+            <select class="form-control" name="status" id="status">
             <option selected>-----Select Status--------</option>
             <option>Full Time</option>
             <option>Part Time</option>
@@ -104,7 +105,7 @@
           <div class="col-xs-12 col-sm-6 col-md-6">
             <div class="form-group"> 
               <div class="controls">
-                <select class="form-control" name="level">
+                <select class="form-control" name="level" id="level">
                 <option selected>----Select Level-----</option>
                 <option>1</option>
                 <option>2</option>

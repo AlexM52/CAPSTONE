@@ -11,19 +11,18 @@
 								</tr>
 								<tr>
 								<td>
-								<?php while($record2 = mysql_fetch_array($myData2)){?><input type="checkbox" name="semester1" onClick="checkboxes1();" value= "<?php
-									echo '<option value="'.$record2['c_code'].'"><a href="#" data-toggle="modal" data-target="#t_and_c_m">'.$record2['c_code'].' '.$record2['c_name'].'</a></option>';?></br></a>
+								<?php while($record2 = mysql_fetch_array($myData2)){
+									echo '<input type="checkbox" id="semester1" value="'.$record2['c_code'].'" onClick="checkboxes1();" name="boxes[]"><a href="#" data-toggle="modal" data-target="#t_and_c_m">'.$record2['c_code'].' '.$record2['c_name'].'</a></br>';?>
 									<?php
 								}
 								?>
 								</td>
 								<td>
 								<?php while($record3 = mysql_fetch_array($myData3)){
-									?><input type="checkbox" name="semester2" onClick="checkboxes1();" value= "<?php  
-									echo '<option value="'.$record3['c_code'].'"><a href="#" data-toggle="modal" data-target="#t_and_c_m">'.$record3['c_code'].' '.$record3['c_name'].'</a></option>'; 
+									echo '<input type="checkbox" id="semester2" onClick="checkboxes1();" value="'.$record3['c_code'].'" name="boxes[]"><a href="#" data-toggle="modal" data-target="#t_and_c_m">'.$record3['c_code'].' '.$record3['c_name'].'</a></br>'; 
 									$course = $record3['creditnum'];
 									$code = $record3['c_code'];
-									?></br></a>
+									?>
 									<!-- Modal -->
 									<div class="modal fade" id="t_and_c_m" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 									<div class="modal-dialog modal-md">
@@ -64,14 +63,24 @@ function checkboxes1()
           
         for (var i=0; i<inputElems.length; i++) { 
 			var course = <?php echo $course; ?>;
-			if (inputElems[i].name == "semester1" && inputElems[i].type == "checkbox" && inputElems[i].checked == true) 
+			if (inputElems[i].id == "semester1" && inputElems[i].type == "checkbox" && inputElems[i].checked == true) 
 			{
 				count = count + course;
+				if (count >18)
+				{
+					alert ("You have exceeded you semester's 1 credit limit");
+				}
+				
 			}
 			else
 			{
-				if (inputElems[i].name == "semester2" && inputElems[i].type == "checkbox" && inputElems[i].checked == true) 
+				if (inputElems[i].id == "semester2" && inputElems[i].type == "checkbox" && inputElems[i].checked == true) 
 				{
+					count2 = count2 + course;
+					if (count2 >21)
+					{
+						alert ("You have exceeded you semester's 2 credit limit");
+					}
 					count2 = count2 + course;
 				}
 			}

@@ -17,7 +17,7 @@
 		foreach($_POST["boxes"] as $boxValue){
 			echo $boxValue;
 			$query = "SELECT * FROM cxc WHERE cxc_name = '$boxValue'";
-			$results = mysql_query($connection, $query);
+			$results = mysql_query($query);
 			while($record = mysql_fetch_assoc($results))
 			{
 				$type = $record['type'];

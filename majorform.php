@@ -58,29 +58,7 @@
 				</div>
 			</div>
 			
-			<div class="control-group">
-				<label>Level:</label>
-				<div class="controls">
-					<select class="form-control" name="level">
-					<option selected>--Select Year--</option>
-					<option>1st Year</option>
-					<option>2nd Year</option>
-					<option>3rd Year</option>
-					<option>4th Year +</option>
-					</select></br>
-				</div>
-			</div>
-			
-			<div class="control-group">
-				<label>Status:</label>
-				<div class="controls">
-					<select class="form-control" name="status">
-					<option selected>--Select Status--</option>
-					<option>Full Time</option>
-					<option>Part Time</option>
-					</select></br>
-				</div>
-			</div>
+		
 			
 			<div class="control-group" style="float: right">
               <label></label>

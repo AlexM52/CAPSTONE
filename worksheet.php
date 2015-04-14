@@ -2,6 +2,7 @@
   include_once 'function.php';
   connect();
   session_start();
+  $_SESSION['year'] = 1;
 ?>
 
 <!DOCTYPE html>
@@ -24,7 +25,8 @@
         <?php include 'navbar.php';?>
     </nav>
 <!-- /Header -->
-
+<h3><i class="glyphicon glyphicon-briefcase"></i> Start Below</h3>
+      <hr>
 <!-- Main -->
 <div class="container">
   
@@ -38,10 +40,12 @@
       <ul class="nav nav-stacked">
         <li><a href="cxc.php"><i class="glyphicon glyphicon-flash"></i> Before You Plan</a></li>
         <li><a href="majors.php"><i class="glyphicon glyphicon-flash"></i> Choose Your Major/Minor</a></li>
+		<li><a href="interests.php"><i class="glyphicon glyphicon-flash"></i> State Your Interests</a></li>
         <li><a href="worksheet.php"><i class="glyphicon glyphicon-link"></i> Year 1</a></li>
         <li><a href="worksheet2.php"><i class="glyphicon glyphicon-list-alt"></i> Year 2</a></li>
         <li><a href="worksheet3.php"><i class="glyphicon glyphicon-book"></i> Year 3</a></li>
         <li><a href="worksheet4.php"><i class="glyphicon glyphicon-briefcase"></i> Year 4+</a></li>
+		<li><a href="view_worksheet.php"><i class="glyphicon glyphicon-flash"></i> My Courses</a></li>
       </ul>
       
       <hr>
@@ -66,9 +70,9 @@
           
          <form class="form form-vertical" method="post" action="selected_courses.php">
             <div class="control-group" name="major1"id="major1">
-              <label id="controls"><h4><?php query_MyCourses_major1() ?></h4></label>
+              <label class="form-control" id="controls" align="center"><h4><?php query_MyCourses_major1() ?></h4></label>
               <div class="controls">
-          <?php query_MyCourses_major1_level1() ?>
+          <?php query_MyCourses_major1_level1() ?></br>
               </div>
             </div>
       <script>
@@ -80,9 +84,9 @@
       
       
             <div class="control-group" name="major2" id="major2">
-              <label id="controls2"><h4><?php query_MyCourses_major2() ?></h4></label>
+              <label class="form-control" id="controls2" align="center"><h4><?php query_MyCourses_major2() ?></h4></label>
               <div class="controls">
-          <?php query_MyCourses_major2_level1() ?>
+          <?php query_MyCourses_major2_level1() ?></br>
               </div>
             </div>
       <script>
@@ -91,13 +95,10 @@
         }
       </script>
       
-      
-
-      <form class="form form-vertical">
             <div class="control-group" name="special" id="special">
-              <label id="controls3"><h4><?php query_MyCourses_special() ?></h4></label>
+              <label class="form-control" id="controls3" align="center"><h4><?php query_MyCourses_special() ?></h4></label>
               <div class="controls">
-          <?php query_MyCourses_special_level1() ?>
+          <?php query_MyCourses_special_level1() ?></br>
               </div>
             </div>
       <script>
@@ -108,9 +109,9 @@
         
       
             <div class="control-group" name="minor1" id="minor1">
-              <label id="controls4"><h4><?php query_MyCourses_minor1() ?></h4></label>
+              <label class="form-control" id="controls4" align="center"><h4><?php query_MyCourses_minor1() ?></h4></label>
               <div class="controls">
-          <?php query_MyCourses_minor1_level1() ?>
+          <?php query_MyCourses_minor1_level1() ?></br>
               </div>
             </div> 
       <script>
@@ -120,9 +121,9 @@
       </script>
       
       <div class="control-group" name="minor2" id="minor2">
-              <label id="controls5"><h4><?php query_MyCourses_minor2() ?></h4></label>
+              <label class="form-control" id="controls5" align="center"><h4><?php query_MyCourses_minor2() ?></h4></label>
               <div class="controls">
-          <?php query_MyCourses_minor2_level1() ?>
+          <?php query_MyCourses_minor2_level1() ?></br>
               </div>
             </div>
       <script>
@@ -132,34 +133,27 @@
       </script>
       
       <div class="control-group">
-              <label class="form-control"><h4>Electives</h4></label>
-        <p style="color: blue">Use these courses to add to your credit count.</p>
+              <label class="form-control" align="center"><h4>ELECTIVES</h4></label>
+			  <p style="color: blue">By setting <a href="interests.php">your interest(s)</a>, we are better able to suggest elective courses.</p>
+        <p style="color: red">Use these courses to add to your credit count.</p>
               <div class="controls">
-        <table style="width: 100%" >
-        <tr>
-          <td style="text-align: center"><b>Semester I</b></td>
-          <td style="text-align: center"><b>Semester II</b></td>
-        </tr>
-        
-        </table>
+                <?php electiveslevel1() ?>
+      </br>
               </div>
             </div>   
       
       <div class="control-group">
-              <label class="form-control"><h4>Foundation</h4></label>
-        <p style="color: blue">You must complete a total of three(3) foundation courses in the span of your university life. Start by completing one each academic year</p>
-              <div class="controls">
-        <table style="width: 100%" >
-        <tr>
-          <td style="text-align: center"><b>Semester I</b></td>
-          <td style="text-align: center"><b>Semester II</b></td>
-        </tr        
-        </table>
-              </div>
-            </div>   
+			<label class="form-control" align="center"><h4>FOUNDATIONS</h4></label>
+			<p style="color: blue">You must complete a total of three(3) foundation courses in the span of your university life. 
+			Start by completing one each academic year</p>
+			<p style="color:red">Select your foundation course under the semester in which you wish to complete it.</p>
+			<div class="controls">
+				<?php query_Foundation_level1() ?></br>
+            </div>
+        </div>   
          
-            <div class="control-group" style="float: right">
-              <label></label>
+            <div class="control-group">
+              <label class="form-control" align="center"><h4>CREDIT DETAILS</h4></label>
               <div class="controls">
             <table width=100%>
               <tr style="vertical-align: top">
@@ -170,16 +164,22 @@
                 <td style="color: blue">Your Total Credit(s):<p id="count">0</p></td>
                 <td style="color: blue">Your Total Credit(s):<p id="count2">0</p></td>
                 </tr>
-            </table>
-                <button type="submit" class="btn btn-primary" align="right">View my worksheet</button>
+            </table></br>
               </div>
+			</div> 
+			  <button type="submit" class="btn btn-primary" align="right">View my worksheet</button>
           </form>
   
+ </div>
+  </div>
+  </div>
+  </div>
+  </body>
+  
+  <footer class="text-center">CAPSTONE Project Student Course Advisor</footer>
   <!-- script references -->
     <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
-  </body>
-  <footer class="text-center">CAPSTONE Project Student Course Advisor</footer>
 </html>
 
 

@@ -19,13 +19,16 @@
                         <a href="faqs.php">FAQ's</a>
                     </li>
                     <li>
-                        <a href="#">Contact</a>
+                        <a href="contactform.php">Contact</a>
+                    </li>
+                    <li>
+                        <a href="features.php">Features</a>
                     </li>
                     <li class="dropdown">
                       <a class="dropdown-toggle" role="button" data-toggle="dropdown" href="#">
                         <i class="glyphicon glyphicon-user"></i> <?php echo $_SESSION["fname"]?>  <?php echo $_SESSION["lname"];?><span class="caret"></span></a>
                       <ul id="g-account-menu" class="dropdown-menu" role="menu">
-                        <li><a href="#">My Profile</a></li>
+                        <li><a href="dashboard.php">Dashboard</a></li>
                         <li><a href="logout.php"><i class="glyphicon glyphicon-lock"></i> Logout</a></li>
                       </ul>
                     </li>

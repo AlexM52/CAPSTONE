@@ -94,6 +94,8 @@ session_start();
                   <!--  <li class="active"><a href="./Cover Template for Bootstrap_files/Cover Template for Bootstrap.html">Log In</a></li> -->
                   <li><a href="about.php">About</a></li>
                   <li><a href="faqs.php">FAQ's</a></li>
+                  <li><a href="features.php">Features</a></li>
+
                 </ul>
               </nav>
             </div>

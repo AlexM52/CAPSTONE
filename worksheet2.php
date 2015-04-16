@@ -32,7 +32,7 @@
   
   <!-- upper section -->
   <div class="row">
-  <div class="col-sm-3">
+   <div class="col-sm-3" style="position: fixed">
       <!-- left -->
       <h3><i class="glyphicon glyphicon-briefcase"></i> Start Below</h3>
       <hr>
@@ -49,9 +49,25 @@
       </ul>
       
       <hr>
+	  
+	   <div class="control-group">
+              <label class="form-control" align="center"><h5><strong>CREDIT DETAILS</strong></h5></label>
+              <div class="controls">
+            <table width=100%>
+              <tr style="vertical-align: top">
+                <td style="color: blue">Maximum Credits for Semester I: 18</td>
+                <td style="color: blue">Maximum Credits for Semester II: 21</td>
+                </tr>
+                <tr style="vertical-align: top">
+                <td style="color: blue">Your Total Credit(s):<p id="count">0</p></td>
+                <td style="color: blue">Your Total Credit(s):<p id="count2">0</p></td>
+                </tr>
+            </table></br>
+              </div>
+			</div> 
       
     </div><!-- /span-3 -->
-    <div class="col-sm-9" >
+    <div class="col-sm-9" style="float: right;  margin-right: -50px">
         
       <!-- column 2 --> 
        <h3><i class="glyphicon glyphicon-education"></i> Here are some suggestions.</h3>  
@@ -173,22 +189,6 @@
 			</div>
 			</div>
         </div>   
-         
-            <div class="control-group">
-              <label class="form-control" align="center"><h4>CREDIT DETAILS</h4></label>
-              <div class="controls">
-            <table width=100%>
-              <tr style="vertical-align: top">
-                <td style="color: blue">Maximum Credits for Semester I: 18</td>
-                <td style="color: blue">Maximum Credits for Semester II: 21</td>
-                </tr>
-                <tr style="vertical-align: top">
-                <td style="color: blue">Your Total Credit(s):<p id="count">0</p></td>
-                <td style="color: blue">Your Total Credit(s):<p id="count2">0</p></td>
-                </tr>
-            </table>
-              </div>
-			</div> 
 			  <div align="right"><button type="submit" class="btn btn-primary">View my worksheet</button></div></br>
           </form>
   </div>

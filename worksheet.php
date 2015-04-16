@@ -32,7 +32,7 @@
   
   <!-- upper section -->
   <div class="row">
-  <div class="col-sm-3">
+  <div class="col-sm-3" style="position: fixed">
       <!-- left -->
       <h3><i class="glyphicon glyphicon-briefcase"></i> Start Below</h3>
       <hr>
@@ -49,9 +49,25 @@
       </ul>
       
       <hr>
+	  
+	   <div class="control-group">
+              <label class="form-control" align="center"><h5><strong>CREDIT DETAILS</strong></h5></label>
+              <div class="controls">
+            <table width=100%>
+              <tr style="vertical-align: top">
+                <td style="color: blue">Maximum Credits for Semester I: 18</td>
+                <td style="color: blue">Maximum Credits for Semester II: 21</td>
+                </tr>
+                <tr style="vertical-align: top">
+                <td style="color: blue">Your Total Credit(s):<p id="count">0</p></td>
+                <td style="color: blue">Your Total Credit(s):<p id="count2">0</p></td>
+                </tr>
+            </table></br>
+              </div>
+			</div> 
       
     </div><!-- /span-3 -->
-    <div class="col-sm-9" >
+    <div class="col-sm-9" style="float: right;  margin-right: -50px">
         
       <!-- column 2 --> 
        <h3><i class="glyphicon glyphicon-education"></i> Here are some suggestions.</h3>  
@@ -68,7 +84,7 @@
         </div>
         <div class="panel-body">
           
-         <form class="form form-vertical" method="post" action="selected_courses.php">
+         <form class="form form-vertical" method="post" action="selected_courses.php" onsubmit="return totalcredits(this)">
             <div class="control-group" name="major1"id="major1">
               <label class="form-control" id="controls" align="center"><h4><?php query_MyCourses_major1() ?></h4></label>
               <div class="controls">
@@ -151,22 +167,6 @@
 				<?php query_Foundation_level1() ?></br>
             </div>
         </div>   
-         
-            <div class="control-group">
-              <label class="form-control" align="center"><h4>CREDIT DETAILS</h4></label>
-              <div class="controls">
-            <table width=100%>
-              <tr style="vertical-align: top">
-                <td style="color: blue">Maximum Credits for Semester I: 18</td>
-                <td style="color: blue">Maximum Credits for Semester II: 21</td>
-                </tr>
-                <tr style="vertical-align: top">
-                <td style="color: blue">Your Total Credit(s):<p id="count">0</p></td>
-                <td style="color: blue">Your Total Credit(s):<p id="count2">0</p></td>
-                </tr>
-            </table></br>
-              </div>
-			</div> 
 			  <button type="submit" class="btn btn-primary" align="right">View my worksheet</button>
           </form>
   
@@ -174,6 +174,52 @@
   </div>
   </div>
   </div>
+  <script language="javascript" type="text/javascript">
+    function totalcredits()
+    {
+
+      var semester1 = document.getElementById("count").innerHTML;
+      var semester2 = document.getElementById("count2").innerHTML;
+      var status = document.getElementById("status").value;
+      var credittotal = parseInt(semester1) + parseInt(semester2);
+
+      if((semester1 < 13) && (status=="Full Time")){
+        alert("You need to do more than 12 credits in semester one.");
+        return false;
+      }
+      else if((semester2 < 13) && (status=="Full Time")) {
+        alert("You need to do more than 12 credits in semester two.");
+        return false;
+      }
+      else if((credittotal < 33) && (status=="Full Time")){
+        alert("You need to do a minimum of 33 credits for the year.");
+        return false;
+      }
+      else if((credittotal > 39) && (status=="Full Time")){
+        alert("You have exceeded your credit limit for the year.");
+        return false;
+      }
+      else if((semester1 > 12) && (status=="Part Time")){
+        alert("You can only do 12 credits in semester one.");
+        return false;
+      }
+      else if((semester2 > 12) && (status=="Part Time")){
+        alert("You can only do 12 credits in semester two.");
+        return false;
+      }
+      else if((credittotal < 18) && (status=="Part Time")){
+        alert("You need to do a minimum of 18 credits for the year.");
+        return false;
+      }
+      else if((credittotal > 27) && (status=="Part Time")){
+        alert("You have exceeded your credit limit for the year.");
+        return false;
+      }
+      else{
+        return true;
+      }
+  }
+  </script>
   </body>
   
   <footer class="text-center">CAPSTONE Project Student Course Advisor</footer>

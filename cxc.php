@@ -31,7 +31,7 @@
   
   <!-- upper section -->
   <div class="row">
-  <div class="col-sm-3">
+  <div class="col-sm-3" style="position: fixed">
       <!-- left -->
       <h3><i class="glyphicon glyphicon-briefcase"></i> Start Below</h3>
       <hr>
@@ -49,7 +49,7 @@
       <hr>
       
     </div><!-- /span-3 -->
-    <div class="col-sm-9" >
+    <div class="col-sm-9" style="float: right;  margin-right: -50px">
         
       <!-- column 2 --> 
        <h3><i class="glyphicon glyphicon-education"></i> Welcome to all our 1st year students!</h3>  

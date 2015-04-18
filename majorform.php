@@ -63,6 +63,7 @@
 			<div class="control-group" style="float: right">
               <label></label>
               <div class="controls">
+				<button type="reset" class="btn btn-primary" onClick="window.location.reload()" value="Reset">Reset Selection(S)</button>
                 <button type="submit" class="btn btn-primary">Plan My Degree</button>
               </div>
             </div>

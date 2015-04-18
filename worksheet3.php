@@ -3,6 +3,13 @@
   connect();
   session_start();
   $_SESSION['year'] = 3;
+   if (!isset($_SESSION["stid"]))
+{
+    ?><script> alert("I'm sorry, you did not login");</script><?php
+	echo "<meta http-equiv=\"refresh\" content=\"0; url=http://146.148.57.189/Capstone/\">";
+}
+else
+{
 ?>
 
 <!DOCTYPE html>
@@ -68,10 +75,35 @@
       
     </div><!-- /span-3 -->
     <div class="col-sm-9" style="float: right;  margin-right: -50px">
-        
+     <div style="float: right"><a align="right" class="navbar-brand" href="index.php"><img style="width:250px; height:80px" src="pictures/logo_1570017_web.jpg" alt=""></a></div>  
       <!-- column 2 --> 
-       <h3><i class="glyphicon glyphicon-education"></i> Here are some suggestions.</h3>  
-            
+       <h3><i class="glyphicon glyphicon-education"></i> Here are some suggestions.</h3>
+	   <li class="dropdown">
+		          <a class="dropdown-toggle" role="button" data-toggle="dropdown" href=""> Search For More Courses <span class="caret"></span></a>
+		          <ul id="g-account-menu" class="dropdown-menu" role="menu">
+		            <form class="navbar-form navbar-left" method="post" action="search.php">
+                              <div class="form-group">
+									Department: <select class="form-control" name="search" required autofocus>
+											<option selected>LIFE SCIENCES</option>
+											<option>MEDICAL SCIENCES</option>
+											<option>CHEMISTRY</option>
+											<option>COMPUTING</option>
+											<option>PHYSICS</option>
+											<option>GEOGRAPYH AND GEOLOGY</option>
+											<option>MATHEMATICS</option>
+									</select>
+									
+									Level: <select class="form-control" name="level" required autofocus>
+											<option selected>1</option>
+											<option>2</option>
+											<option>3</option>
+									</select>
+								</div>
+                              <button type="submit" class="btn btn-default">Go</button>
+                     </form>
+
+		          </ul>
+		        </li>
        <hr>
      
        <div class="panel panel-default">
@@ -88,7 +120,7 @@
             <div class="control-group" name="major1"id="major1">
               <label id="controls" class="form-control" align="center"><h4><?php query_MyCourses_major1() ?></h4></label>
               <div class="controls">
-          <?php major1level3() ?></br>
+          <b><?php echo "Level II Courses";?></b><?php major1level2(); ?><b><?php echo "Level III Courses";?></b><?php major1level3();?></br>
               </div>
             </div>
       <script>
@@ -102,7 +134,7 @@
             <div class="control-group" name="major2" id="major2">
               <label id="controls2" class="form-control" align="center"><h4><?php query_MyCourses_major2() ?></h4></label>
               <div class="controls">
-          <?php major2level3() ?></br>
+          <b><?php echo "Level II Courses";?></b><?php major2level2(); ?><b><?php echo "Level III Courses";?></b><?php major2level3();?></br>
               </div>
             </div>
       <script>
@@ -117,7 +149,7 @@
             <div class="control-group" name="special" id="special">
               <label id="controls3" class="form-control" align="center"><h4><?php query_MyCourses_special() ?></h4></label>
               <div class="controls">
-          <?php programlevel3() ?></br>
+          <b><?php echo "Level II Courses";?></b><?php programlevel2(); ?><b><?php echo "Level III Courses";?></b><?php programlevel3();?></br>
               </div>
             </div>
       <script>
@@ -130,7 +162,7 @@
             <div class="control-group" name="minor1" id="minor1">
               <label id="controls4" class="form-control" align="center"><h4><?php query_MyCourses_minor1() ?></h4></label>
               <div class="controls">
-          <?php minor1level3()?></br>
+          <b><?php echo "Level II Courses";?></b><?php minor1level2(); ?><b><?php echo "Level III Courses";?></b><?php minor1level3();?></br>
               </div>
             </div> 
       <script>
@@ -142,7 +174,7 @@
       <div class="control-group" name="minor2" id="minor2">
               <label id="controls5" class="form-control" align="center"><h4><?php query_MyCourses_minor2() ?></h4></label>
               <div class="controls">
-          <?php minor2level3() ?></br>
+          <b><?php echo "Level II Courses";?></b><?php minor2level2(); ?><b><?php echo "Level III Courses";?></b><?php minor2level3();?></br>
               </div>
             </div>
       <script>
@@ -189,7 +221,7 @@
 			</div>
 			</div>
         </div>   
-			  <div align="right"><button type="submit" class="btn btn-primary">View my worksheet</button></div>
+			  <div align="right"><button type="submit" class="btn btn-primary">Update my worksheet</button></div>
           </form>
 		  
   </div>
@@ -203,5 +235,7 @@
     <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
 </html>
-
+<?php
+}
+?>
 

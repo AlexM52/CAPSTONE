@@ -2,14 +2,7 @@
   include_once 'function.php';
   connect();
   session_start();
-  $_SESSION['year'] = 2;
-   if (!isset($_SESSION["stid"]))
-{
-    ?><script> alert("I'm sorry, you did not login");</script><?php
-	echo "<meta http-equiv=\"refresh\" content=\"0; url=http://146.148.57.189/Capstone/\">";
-}
-else
-{
+  $_SESSION['year'] = 1;
 ?>
 
 <!DOCTYPE html>
@@ -39,7 +32,7 @@ else
   
   <!-- upper section -->
   <div class="row">
-   <div class="col-sm-3" style="position: fixed">
+  <div class="col-sm-3" style="position: fixed">
       <!-- left -->
       <h3><i class="glyphicon glyphicon-briefcase"></i> Start Below</h3>
       <hr>
@@ -75,35 +68,10 @@ else
       
     </div><!-- /span-3 -->
     <div class="col-sm-9" style="float: right;  margin-right: -50px">
-      <div style="float: right"><a align="right" class="navbar-brand" href="index.php"><img style="width:250px; height:80px" src="pictures/logo_1570017_web.jpg" alt=""></a></div>  
+        
       <!-- column 2 --> 
-       <h3><i class="glyphicon glyphicon-education"></i> Here are some suggestions.</h3>
-	   <li class="dropdown">
-		          <a class="dropdown-toggle" role="button" data-toggle="dropdown" href=""> Search For More Courses <span class="caret"></span></a>
-		          <ul id="g-account-menu" class="dropdown-menu" role="menu">
-		            <form class="navbar-form navbar-left" method="post" action="search.php">
-                              <div class="form-group">
-									Department: <select class="form-control" name="search" required autofocus>
-											<option selected>LIFE SCIENCES</option>
-											<option>MEDICAL SCIENCES</option>
-											<option>CHEMISTRY</option>
-											<option>COMPUTING</option>
-											<option>PHYSICS</option>
-											<option>GEOGRAPYH AND GEOLOGY</option>
-											<option>MATHEMATICS</option>
-									</select>
-									
-									Level: <select class="form-control" name="level" required autofocus>
-											<option selected>1</option>
-											<option>2</option>
-											<option>3</option>
-									</select>
-								</div>
-                              <button type="submit" class="btn btn-default">Go</button>
-                     </form>
-
-		          </ul>
-		        </li>
+       <h3><i class="glyphicon glyphicon-education"></i> Here are some suggestions.</h3>  
+            
        <hr>
      
        <div class="panel panel-default">
@@ -116,11 +84,11 @@ else
         </div>
         <div class="panel-body">
           
-          <form class="form form-vertical" method="post" action="selected_courses.php">
+         <form class="form form-vertical" method="post" action="selected_courses.php">
             <div class="control-group" name="major1"id="major1">
-              <label id="controls" class="form-control" align="center"><h4><?php query_MyCourses_major1() ?></h4></label>
+              <label class="form-control" id="controls" align="center"><h4><?php query_MyCourses_major1() ?></h4></label>
               <div class="controls">
-         <b><?php echo "Level II Courses";?></b><?php major1level2(); ?><b><?php echo "Level III Courses";?></b><?php major1level3();?></br>
+          <?php query_MyCourses_major1_level1() ?></br>
               </div>
             </div>
       <script>
@@ -132,9 +100,9 @@ else
       
       
             <div class="control-group" name="major2" id="major2">
-              <label id="controls2" class="form-control" align="center" ><h4><?php query_MyCourses_major2() ?></h4></label>
+              <label class="form-control" id="controls2" align="center"><h4><?php query_MyCourses_major2() ?></h4></label>
               <div class="controls">
-          <b><?php echo "Level II Courses";?></b><?php major2level2(); ?><b><?php echo "Level III Courses";?></b><?php major2level3();?></br>
+          <?php query_MyCourses_major2_level1() ?></br>
               </div>
             </div>
       <script>
@@ -143,13 +111,10 @@ else
         }
       </script>
       
-      
-
-      <form class="form form-vertical">
             <div class="control-group" name="special" id="special">
-              <label id="controls3" class="form-control" align="center"><h4><?php query_MyCourses_special() ?></h4></label>
+              <label class="form-control" id="controls3" align="center"><h4><?php query_MyCourses_special() ?></h4></label>
               <div class="controls">
-          <b><?php echo "Level II Courses";?></b><?php programlevel2(); ?><b><?php echo "Level III Courses";?></b><?php programlevel3();?></br>
+          <?php query_MyCourses_special_level1() ?></br>
               </div>
             </div>
       <script>
@@ -160,9 +125,9 @@ else
         
       
             <div class="control-group" name="minor1" id="minor1">
-              <label id="controls4" class="form-control" align="center"><h4><?php query_MyCourses_minor1() ?></h4></label>
+              <label class="form-control" id="controls4" align="center"><h4><?php query_MyCourses_minor1() ?></h4></label>
               <div class="controls">
-         <b><?php echo "Level II Courses";?></b><?php minor1level2(); ?><b><?php echo "Level III Courses";?></b><?php minor1level3();?></br>
+          <?php query_MyCourses_minor1_level1() ?></br>
               </div>
             </div> 
       <script>
@@ -172,9 +137,9 @@ else
       </script>
       
       <div class="control-group" name="minor2" id="minor2">
-              <label id="controls5" class="form-control" align="center"><h4><?php query_MyCourses_minor2() ?></h4></label>
+              <label class="form-control" id="controls5" align="center"><h4><?php query_MyCourses_minor2() ?></h4></label>
               <div class="controls">
-          <b><?php echo "Level II Courses";?></b><?php minor2level2(); ?><b><?php echo "Level III Courses";?></b><?php minor2level3();?></br>
+          <?php query_MyCourses_minor2_level1() ?></br>
               </div>
             </div>
       <script>
@@ -185,45 +150,27 @@ else
       
       <div class="control-group">
               <label class="form-control" align="center"><h4>ELECTIVES</h4></label>
-			  <p style="color: blue">By setting <a href="interests.php">your interest(s)</a>, 
-			  we are better able to suggest elective courses.</p><p style="color: red">Use these courses to add to your credit count.</p>
+			  <p style="color: blue">By setting <a href="interests.php">your interest(s)</a>, we are better able to suggest elective courses.</p>
+        <p style="color: red">Use these courses to add to your credit count.</p>
               <div class="controls">
-        <table style="width: 100%" >
-        <tr>
-          <td style="text-align: center"><b>Semester I</b></td>
-          <td style="text-align: center"><b>Semester II</b></td>
-        </tr>
-        
-        </table></br>
+                <?php electiveslevel1() ?>
+      </br>
               </div>
             </div>   
       
       <div class="control-group">
 			<label class="form-control" align="center"><h4>FOUNDATIONS</h4></label>
 			<p style="color: blue">You must complete a total of three(3) foundation courses in the span of your university life. 
-			Start by completing one each academic year.</p><p style="color: red">Select your foundation course under the semester 
-			in which you wish to complete it.</p>
+			Start by completing one each academic year</p>
+			<p style="color:red">Select your foundation course under the semester in which you wish to complete it.</p>
 			<div class="controls">
-				<?php query_Foundation_level2() ?></br>
+				<?php query_Foundation_level1() ?></br>
             </div>
-        </div>  
-
-			<div class="control-group">
-			<p style="color: blue"><strong>Want to try something new? Replace your foundation courses with a language!</strong></p>
-			<div class="controls" align="right">
-			<select class="form-control">
-				<option selected>--Select a Language--</option>
-				<option>Chinese</option>
-				<option>French</option>
-				<option>Japanese</option>
-				<option>Spanish</option>
-			</select></br>
-			</div>
-			</div>
         </div>   
-			  <div align="right"><button type="submit" class="btn btn-primary">Update my worksheet</button></div></br>
+			  <button type="submit" class="btn btn-primary" align="right">View my worksheet</button>
           </form>
-  </div>
+  
+ </div>
   </div>
   </div>
   </div>
@@ -235,6 +182,4 @@ else
     <script src="js/bootstrap.min.js"></script>
 </html>
 
-<?php
-}
-?>
+

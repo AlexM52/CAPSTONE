@@ -87,10 +87,9 @@
             </div>
             <div class="item">
                 <!-- Set the second background image using inline CSS below. -->
-                <div class="fill" style="background-image:url(pictures/Course.png');"></div>
+                <div class="fill" style="background-image:url('http://placehold.it/1900x1080&text=Slide Two');"></div>
                 <div class="carousel-caption">
-                    <h2>Let us suggest your courses</h2>
-					<p>Based on your Major/Minor, we provide you with suitable course options</p>
+                    <h2>Caption 2</h2>
                 </div>
             </div>
             <div class="item">

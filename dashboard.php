@@ -2,6 +2,13 @@
   include_once 'function.php';
   connect();
   session_start();
+  if (!isset($_SESSION["stid"]))
+{
+    ?><script> alert("I'm sorry, you did not login");</script><?php
+	echo "<meta http-equiv=\"refresh\" content=\"0; url=http://146.148.57.189/Capstone/\">";
+}
+else
+{
 ?>
 
 <!DOCTYPE html>
@@ -43,13 +50,15 @@
         <li><a href="worksheet.php"><i class="glyphicon glyphicon-link"></i> Year 1</a></li>
         <li><a href="worksheet2.php"><i class="glyphicon glyphicon-list-alt"></i> Year 2</a></li>
         <li><a href="worksheet3.php"><i class="glyphicon glyphicon-book"></i> Year 3</a></li>
-        <li><a href="javascript:;"><i class="glyphicon glyphicon-briefcase"></i> Year 4+</a></li>
+        <li><a href="worksheet4.php"><i class="glyphicon glyphicon-briefcase"></i> Year 4+</a></li>
+		<li><a href="view_worksheet.php"><i class="glyphicon glyphicon-flash"></i> My Courses</a></li>
       </ul>
       
       <hr>
       
     </div><!-- /span-3 -->
     <div class="col-sm-9" style="float: right;  margin-right: -50px">
+	<div style="float: right"><a align="right" class="navbar-brand" href="index.php"><img style="width:250px; height:80px" src="pictures/logo_1570017_web.jpg" alt=""></a></div> 
         
       <!-- column 2 --> 
        <h3><i class="glyphicon glyphicon-dashboard"></i> Your Dashboard</h3>  
@@ -129,7 +138,9 @@
             <?php
               $query3 = "SELECT * FROM studentcourses WHERE stid = '$id'";
               $results3 = mysql_query($query3);
-              $level1 = 0;
+              $_SESSION['level1'] = 0;
+			  $_SESSION['level2'] = 0;
+			  $_SESSION['level3'] = 0;
               $level23 = 0;
               $foundation = 0;
               $total = 0;
@@ -137,18 +148,22 @@
               while($obj3 = mysql_fetch_array($results3)) //fetch results set as object and output HTML
               {
                 if($obj3['level']=='1'){
-                  $level1 = $level1 + $obj3['credits'];
+                  $_SESSION['level1'] = $_SESSION['level1'] + $obj3['credits'];
                 }
-                elseif(($obj3['level']=='2') || ($obj3['level']==3))
-                {
-                  $level23 = $level23 + $obj3['credits'];
+				elseif($obj3['level']=='2'){
+					$_SESSION['level2'] = $_SESSION['level2'] + $obj3['credits'];
+					$level23 = $level23 + $obj3['credits'];
+                }
+				elseif($obj3['level']=='3'){
+					$_SESSION['level3'] = $_SESSION['level3'] + $obj3['credits'];
+					$level23 = $level23 + $obj3['credits'];
                 }
                 elseif($obj3['level']=='-1')
                 {
                   $foundation = $foundation + $obj3['credits'];
                 }
               }
-              $total = $total + $level1 + $level23 + $foundation;
+              $total = $total + $_SESSION['level1'] + $level23 + $foundation;
             ?>    
                <table style="width: 100%">
                 <tr>
@@ -167,7 +182,7 @@
                 </tr>
                 <tr>
                   <td style="text-align: left"><b>Your Progress</b></td>
-                  <td style="text-align: center"><?php echo $level1 ?></td>
+                  <td style="text-align: center"><?php echo $_SESSION['level1'] ?></td>
                   <td style="text-align: center"><?php echo $level23 ?></td>
                   <td style="text-align: center"><?php echo $foundation ?></td>
                   <td style="text-align: center"><b><?php echo $total ?></b></td>
@@ -204,9 +219,12 @@
 
 
 
-  <footer class="text-center">CAPSTONE Project Student Course Advisor</footer>
-	<!-- script references -->
-		<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
-		<script src="js/bootstrap.min.js"></script>
-	</body>
-</html>
+	  <footer class="text-center">CAPSTONE Project Student Course Advisor</footer>
+		<!-- script references -->
+			<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
+			<script src="js/bootstrap.min.js"></script>
+		</body>
+	</html>
+	<?php
+}
+?>

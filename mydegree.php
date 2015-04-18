@@ -27,7 +27,7 @@
 								<?php 
 								$code=array();
 								while($record2 = mysql_fetch_array($myData2)){
-									echo '<input type="checkbox" id="semester1" value="'.$record2['c_code'].'" onClick="checkboxes1();" name="boxes[]"> '.$record2['c_code'].'</br>';
+									echo '<input type="checkbox" id="semester1" value="'.$record2['c_code'].'" onClick="checkboxes1();" name="boxes[]"> <span class="'.$record2['c_code'].'" onmouseover="enterShow(this)">'.$record2['c_code'].'</span><div id="'.$record2['c_code'].'" style ="display:none;">'.$record2['c_name'].'</div></br>';
 									$code[] = $record2['c_code'];
 									$coursename = $record2['c_name'];
 								}
@@ -91,10 +91,21 @@
 		</table>
 
     <script>
-		function_to_make_query(idreq)
+		/*function_to_make_query(idreq)
 		{
 			<?php echo "hi"; ?>
-		}
+		}*/
+		function enterShow(x){
+	        var code = x.class;
+	        alert(code);
+	        document.getElementById(code).style.display = "block";
+		};
+
+		function exitHide(x){
+		    var checkbox = document.getElementById('semester1').value;
+	        var showing = document.getElementById(checkbox);
+			showing.style.display = "none";
+		};
 
 function checkboxes1()
       {
@@ -119,7 +130,7 @@ function checkboxes1()
 				if (inputElems[i].id == "semester2" && inputElems[i].type == "checkbox" && inputElems[i].checked == true) 
 				{
 					count2 = count2 + course;
-					if(count2 > 19){
+					if(count2 > 22){
 						alert("Credits exceeded for semester two.");
 						inputElems[i].checked = false;
 						count2 = count2 - course;
@@ -129,5 +140,5 @@ function checkboxes1()
 		}
 		document.getElementById("count").innerHTML = count;
 		document.getElementById("count2").innerHTML = count2;
-	}
+	} 
 </script>

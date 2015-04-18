@@ -28,7 +28,6 @@
 	$result = mysql_query($query1);
 	
 	$result2 = mysql_query($query2);
-	echo $result2;
 	if ($result && $result2) 
 	{
 		//include("Location: dashboard.php"); /* Redirect browser */
@@ -36,8 +35,6 @@
 		$_SESSION["stid"]=$id;
 		$_SESSION["fname"]=$Fname;
 		$_SESSION["lname"]=$lname;
-		?>
-		<script type="text/javascript"> window.location="dashboard.php";</script>
-		<?php
+		?><script type="text/javascript"> window.location="dashboard.php";</script><?php
 	}
 ?>

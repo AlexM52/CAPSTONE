@@ -30,7 +30,7 @@
 
     //check for user
 	$id = $_SESSION['stid'];
-	$query = "UPDATE student set stid='$id', major1='$Major1',major2='$Major2',program='$Special',minor1='$Minor1',minor2='$Minor2',level='$Level',status='$Status' where stid='$id'";
+	$query = "UPDATE student set stid='$id', major1='$Major1',major2='$Major2',program='$Special',minor1='$Minor1',minor2='$Minor2' where stid='$id'";
      $result = mysql_query($query);
 
     if($result)

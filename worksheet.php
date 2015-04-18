@@ -3,6 +3,13 @@
   connect();
   session_start();
   $_SESSION['year'] = 1;
+   if (!isset($_SESSION["stid"]))
+{
+    ?><script> alert("I'm sorry, you did not login");</script><?php
+	echo "<meta http-equiv=\"refresh\" content=\"0; url=http://146.148.57.189/Capstone/\">";
+}
+else
+{
 ?>
 
 <!DOCTYPE html>
@@ -68,9 +75,36 @@
       
     </div><!-- /span-3 -->
     <div class="col-sm-9" style="float: right;  margin-right: -50px">
-        
+      <div style="float: right"><a align="right" class="navbar-brand" href="index.php"><img style="width:250px; height:80px" src="pictures/logo_1570017_web.jpg" alt=""></a></div>  
       <!-- column 2 --> 
-       <h3><i class="glyphicon glyphicon-education"></i> Here are some suggestions.</h3>  
+       <h3><i class="glyphicon glyphicon-education"></i> Here are some suggestions.</h3>
+	   <li class="dropdown">
+		          <a class="dropdown-toggle" role="button" data-toggle="dropdown" href=""> Search For More Courses <span class="caret"></span></a>
+		          <ul id="g-account-menu" class="dropdown-menu" role="menu">
+		            <form class="navbar-form navbar-left" method="post" action="search.php">
+                              <div class="form-group">
+									Department: <select class="form-control" name="search" required autofocus>
+											<option selected>LIFE SCIENCES</option>
+											<option>MEDICAL SCIENCES</option>
+											<option>CHEMISTRY</option>
+											<option>COMPUTING</option>
+											<option>PHYSICS</option>
+											<option>GEOGRAPYH AND GEOLOGY</option>
+											<option>MATHEMATICS</option>
+									</select>
+									
+									Level: <select class="form-control" name="level" required autofocus>
+											<option selected>1</option>
+											<option>2</option>
+											<option>3</option>
+									</select>
+								</div>
+                              <button type="submit" class="btn btn-default">Go</button>
+                     </form>
+
+		          </ul>
+		        </li>
+				
             
        <hr>
      
@@ -153,7 +187,8 @@
 			  <p style="color: blue">By setting <a href="interests.php">your interest(s)</a>, we are better able to suggest elective courses.</p>
         <p style="color: red">Use these courses to add to your credit count.</p>
               <div class="controls">
-                <?php electiveslevel1() ?>
+                <?php electiveslevel1()?>
+				
       </br>
               </div>
             </div>   
@@ -167,7 +202,7 @@
 				<?php query_Foundation_level1() ?></br>
             </div>
         </div>   
-			  <button type="submit" class="btn btn-primary" align="right">View my worksheet</button>
+			  <button type="submit" class="btn btn-primary" align="right">Update my worksheet</button>
           </form>
   
  </div>
@@ -227,5 +262,7 @@
     <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
 </html>
-
+<?php
+}
+?>
 

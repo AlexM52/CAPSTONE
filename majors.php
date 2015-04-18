@@ -39,20 +39,22 @@
       <ul class="nav nav-stacked">
         <li><a href="cxc.php"><i class="glyphicon glyphicon-flash"></i> Before You Plan</a></li>
         <li><a href="majors.php"><i class="glyphicon glyphicon-flash"></i> Choose Your Major/Minor</a></li>
-        <li><a href="interests.php"><i class="glyphicon glyphicon-flash"></i> State Your Interests</a></li>
+		<li><a href="interests.php"><i class="glyphicon glyphicon-flash"></i> State Your Interests</a></li>
         <li><a href="worksheet.php"><i class="glyphicon glyphicon-link"></i> Year 1</a></li>
-        <li><a href="javascript:;"><i class="glyphicon glyphicon-list-alt"></i> Year 2</a></li>
-        <li><a href="javascript:;"><i class="glyphicon glyphicon-book"></i> Year 3</a></li>
-        <li><a href="javascript:;"><i class="glyphicon glyphicon-briefcase"></i> Year 4+</a></li>
+        <li><a href="worksheet2.php"><i class="glyphicon glyphicon-list-alt"></i> Year 2</a></li>
+        <li><a href="worksheet3.php"><i class="glyphicon glyphicon-book"></i> Year 3</a></li>
+        <li><a href="worksheet4.php"><i class="glyphicon glyphicon-briefcase"></i> Year 4+</a></li>
+		<li><a href="view_worksheet.php"><i class="glyphicon glyphicon-flash"></i> My Courses</a></li>
       </ul>
       
       <hr>
       
     </div><!-- /span-3 -->
     <div class="col-sm-9" style="float: right;  margin-right: -50px">
+	<div style="float: right"><a align="right" class="navbar-brand" href="index.php"><img style="width:250px; height:80px" src="pictures/logo_1570017_web.jpg" alt=""></a></div> 
         
       <!-- column 2 --> 
-       <h3><i class="glyphicon glyphicon-dashboard"></i> Your Dashboard</h3>  
+       <h3><i class="glyphicon glyphicon-dashboard"></i> Degrees Offered</h3>  
             
        <hr>
       

@@ -21,37 +21,46 @@
 								<tr>
 								<td style="text-align: center"><b>Semester I </b></td>
 								<td style="text-align: center"><b>Semester II</b></td>
+								<td style="text-align: center"><b>Prerequisites</b></td>
 								</tr>
 								<tr>
 								<td>
 								<?php 
+								
 								$code=array();
 								while($record2 = mysql_fetch_array($myData2)){
-									echo '<input type="checkbox" id="semester1" value="'.$record2['c_code'].'" onClick="checkboxes1();" name="boxes[]"> <span class="'.$record2['c_code'].'" onmouseover="enterShow(this)">'.$record2['c_code'].'</span><div id="'.$record2['c_code'].'" style ="display:none;">'.$record2['c_name'].'</div></br>';
+									$unique = $_SESSION['unique'];
+									echo '<input type="checkbox" id="semester1" value="'.$record2['c_code'].'" onClick="checkboxes1();"> <a name="'.$unique.'" onmouseover="enterShow(this)" onmouseout="exitHide(this)">'.$record2['c_code'].'</a><div id="'.$unique.'" style ="visibility:hidden; display:inline;"> '.$record2['c_name'].'</div></br>';
 									$code[] = $record2['c_code'];
 									$coursename = $record2['c_name'];
+									$unique = $unique + 1;
+									$_SESSION['unique'] = $unique;
+							
+								
 								}
 								?>
 								</td>
 								<td>
 								<?php 
 								while($record3 = mysql_fetch_array($myData3)){
-									echo '<input type="checkbox" id="semester2" onClick="checkboxes1();" value="'.$record3['c_code'].'" name="boxes[]"> <span id="getName" onmouseover="javascript:function_to_make_query(this.id)">'.$record3['c_code'].'</span></br>'; 
+									$unique = $_SESSION['unique'];
+									echo '<input type="checkbox" id="semester2" value="'.$record3['c_code'].'" onClick="checkboxes1();"> <a name="'.$unique.'" onmouseover="enterShow(this)" onmouseout="exitHide(this)">'.$record3['c_code'].'</a><div id="'.$unique.'" style ="visibility:hidden; display:inline;"> '.$record3['c_name'].'</div></br>'; 
 									$course = $record3['creditnum'];
 									$code[] = $record3['c_code'];
 									$coursename = $record3['c_name'];
+									$unique = $unique + 1;
+									$_SESSION['unique'] = $unique;
+									
 								}
 								?>
-								<!-- Modal -->
-									<div class="modal fade" id="t_and_c_m" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-									<div class="modal-dialog modal-md">
-									<div class="modal-content">
-									<div class="modal-header">
-									<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-									<h4 class="modal-title" id="myModalLabel" align="center"><strong>Pre-requisites</strong></h4>
-									</div>
-									<div class="modal-body">
-										<?php foreach($code as $boxValue){?>
+								</td><?php
+								array_push($_SESSION['code'],$code);
+								$array = $_SESSION['code'];
+								
+								?>
+								<td><?php
+											foreach($array as $spot){
+												foreach($spot as $boxValue){?>
 												<div class="panel panel-default">
 												<div class="panel-heading">
 												<div class="panel-title">
@@ -63,48 +72,36 @@
 										<div class="panel-body">										
 											<?php $myData7 = mysql_query("SELECT distinct * FROM prereq WHERE c_code='$boxValue'");
 												while($record7 = mysql_fetch_array($myData7)){
-														echo '<p style="display: inline-block" value="'.$record7['prereq_code'].'"> '.$record7['prereq_code'].'</p>, ';
+													echo '<p style="display: inline-block" value="'.$record7['prereq_code'].'"> '.$record7['prereq_code'].'</p>, ';
 												}?>
 												</div>
 												<?php
 											}
-										
+											}
 										?>
-									</div>
-									<div class="modal-footer">
-									<?php
+										</td>
+								
+								<div style="float: right"><b><a href="#" data-toggle="modal" data-target="#t_and_c_m"> Get Pre-requisites</a></b></div>
+								<?php
 									$id = $_SESSION["stid"];
 									$myData6 = mysql_query("SELECT status FROM student WHERE stid='$id'");
 									while($record6 = mysql_fetch_array($myData6)){
 										$status = $record6['status'];
 									}
 									echo '<input type="hidden" name="status" id= status value="'.$status.'" />' ?>
-									<button type="button" class="btn btn-primary" data-dismiss="modal">Ok</button>
-								</div>
-								</div><!-- /.modal-content -->
-								</div><!-- /.modal-dialog -->
-								</div><!-- /.modal -->
-								</div>
-								
-								<div style="float: right"><b><a href="#" data-toggle="modal" data-target="#t_and_c_m"> Get Pre-requisites</a></b></div>
 
 		</table>
 
     <script>
-		/*function_to_make_query(idreq)
-		{
-			<?php echo "hi"; ?>
-		}*/
 		function enterShow(x){
-	        var code = x.class;
-	        alert(code);
-	        document.getElementById(code).style.display = "block";
+	        var code = x.name;
+	        document.getElementById(code).style.visibility = "visible";
 		};
+		
 
 		function exitHide(x){
-		    var checkbox = document.getElementById('semester1').value;
-	        var showing = document.getElementById(checkbox);
-			showing.style.display = "none";
+		    var code = x.name;
+	        document.getElementById(code).style.visibility = "hidden";
 		};
 
 function checkboxes1()

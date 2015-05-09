@@ -3,6 +3,8 @@
   connect();
   session_start();
   $_SESSION['year'] = 1;
+  $_SESSION['unique'] = 0;
+  $_SESSION['code'] = array();
    if (!isset($_SESSION["stid"]))
 {
     ?><script> alert("I'm sorry, you did not login");</script><?php

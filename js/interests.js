@@ -6,7 +6,7 @@ $(document).ready(function(){
         //var x = $( "input:checkbox:checked" ).val();
         //alert($("#w3s").attr("href"));
         //alert(x[0].value);
-        var s = ",";
+        var s = "";
         for(var i=0; i<x.length; i++){
            if (x[i].checked){
              //console.log(x[i].value);
@@ -14,9 +14,10 @@ $(document).ready(function(){
              //console.log(s);
            }
         }
-        console.log(s)
+        s = s.slice(0, -1);
+        console.log(s);
         var oktosend = false;
-        if (s==","){
+        if (s==""){
           alert("You have not selected any interests!");
         }else{
           oktosend = confirm("Sending to database...");

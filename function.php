@@ -2436,4 +2436,22 @@
 
 		
 	}
+	
+	// Converts an array of ints to string in format "x,y,...,z"
+	//  for storing interest id#'s for each student (if needed)
+	function serialize_interests($arr_interests){
+		$s = "";
+		foreach($arr_interests as $value){
+			$s = $s.$value.",";
+		}
+		//strip last ','
+		$s = chop($s, ",");
+		return $s;
+	}
+	
+	// Converts a string of format "x,y,...,z" to an array
+	//  for retrieving serialized interest id# values
+	function parse_interests($str_interest){
+		return explode(",", $str_interest);
+	}
 ?>	

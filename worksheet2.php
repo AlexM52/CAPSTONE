@@ -44,12 +44,12 @@ else
       <h3><i class="glyphicon glyphicon-briefcase"></i> Start Below</h3>
       <hr>
       
-      <ul class="nav nav-stacked">
+      <ul class="nav nav-pills nav-stacked">
         <li><a href="cxc.php"><i class="glyphicon glyphicon-flash"></i> Before You Plan</a></li>
         <li><a href="majors.php"><i class="glyphicon glyphicon-flash"></i> Choose Your Major/Minor</a></li>
 		<li><a href="interests.php"><i class="glyphicon glyphicon-flash"></i> State Your Interests</a></li>
         <li><a href="worksheet.php"><i class="glyphicon glyphicon-link"></i> Year 1</a></li>
-        <li><a href="worksheet2.php"><i class="glyphicon glyphicon-list-alt"></i> Year 2</a></li>
+        <li class="active"><a href="worksheet2.php"><i class="glyphicon glyphicon-list-alt"></i> Year 2</a></li>
         <li><a href="worksheet3.php"><i class="glyphicon glyphicon-book"></i> Year 3</a></li>
         <li><a href="worksheet4.php"><i class="glyphicon glyphicon-briefcase"></i> Year 4+</a></li>
 		<li><a href="view_worksheet.php"><i class="glyphicon glyphicon-flash"></i> My Courses</a></li>

@@ -1,6 +1,12 @@
 <?php
-  //include_once 'function.php';
+  include_once 'function.php';
   session_start();
+  if (!isset($_SESSION['stid'])){
+//   if (false){
+    ?>
+    <script type="text/javascript">window.location="/";</script>
+    <?php
+  }else{
 ?>
 
 <!DOCTYPE html>
@@ -16,6 +22,11 @@
 			<script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
 		<![endif]-->
 		<link href="css/styles.css" rel="stylesheet">
+		<!--<script type="text/javascript">-->
+		<!--  function check(){-->
+		    
+		<!--  }-->
+		<!--</script>-->
 	</head>
 	<body>
 <!-- Header -->
@@ -53,7 +64,7 @@
 	<div style="float: right"><a align="right" class="navbar-brand" href="index.php"><img style="width:250px; height:80px" src="pictures/logo_1570017_web.jpg" alt=""></a></div> 
         
       <!-- column 2 --> 
-       <h3><i class="glyphicon glyphicon-dashboard"></i> Your Dashboard</h3>  
+       <h3><i class="glyphicon glyphicon-check"></i> Interests</h3>  
             
        <hr>
       
@@ -63,111 +74,74 @@
      
        </div><!--/row-->
        
-       <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-        <div class="panel panel-default">
-          <div class="panel-heading" role="tab" id="headingOne">
-            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
-              <h4 class="panel-title">
-              <!--<a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">-->
-                Humanities Interests
-              <!--</a>-->
-              </h4>
-            </a>
-          </div>
-          <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
-            <div class="panel-body">
-              <form action="action_page.php">
-                <!--<div class="panel panel-default">-->
-                <!--  <div class="panel-heading">Interest Area 1</div>-->
-                <!--  <div class="panel-body">-->
-                <div class="container">
-                    <input type="checkbox" name="fst" value="Networking">Foreign Languages</input>
+       
+       
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">Select Interests (max. 15)</h3>
+        </div>
+        <div class="panel-body">
+          <div class="row">
+            <div class="col-md-4">
+              <?php
+              connect();
+              // Get list of current student's interests
+              $myData = mysql_query("SELECT interests FROM student WHERE stid=".$_SESSION['stid']);
+              $record = mysql_fetch_array($myData);
+              $s_ints = $record['interests'];
+            //   $s_ints = explode(",", $s_ints);  // <-- Split serialized string into array of indiv. values
+              $s_ints = parse_interests($s_ints);   //    ^^as above^^
+              // Get # all interest, to split into columns
+              $myData = mysql_query("SELECT COUNT(interest) AS cnt FROM interests");
+              $record = mysql_fetch_array($myData);
+              $i_count = $record['cnt'];
+              $i_colcnt = 0;
+              $myData = mysql_query("SELECT * FROM interests ORDER BY interest ASC");
+              // $first_so_skip = true;
+              // $prev_area = "meh";
+          		while($record = mysql_fetch_array($myData))
+          		{
+            		// 	echo '<option value="'.$record['c_name'].'">'.$record['c_code'].' '.$record['c_name'].'</option>';
+            		// $interest_split = str_split(" ", $record['interest']);
+            		// if ($first_so_skip){
+            		//   echo "first";
+            		//   $first_so_skip = false;
+            		//   $prev_area = $interest_split[0];
+            		// }else{
+            		//   echo $interest_split[0];
+            		//   echo $prev_area;
+            		//   if ($interest_split[0] != $prev_area){
+            		//     echo $interest_split[0];
+            		//     echo $prev_area;
+            		//     >
+            		//     <hr />
+            		//     <?php
+            		//   }
+            		// }
+            		if ($i_colcnt < ($i_count/3)){
+              		?><input type="checkbox" class="cb_interest" name="interests" value="<?php echo $record['iid']; ?>"<?php if(in_array($record['iid'], $s_ints)){echo "checked";} ?>><?php echo $record['interest']; ?></input>
                     <br>
-                    <input type="checkbox" name="fst" value="Security">Education</input>
+                  <?php
+                  $i_colcnt += 1;
+            		}else{
+            		  ?>
+            		  </div>
+            		  <div class="col-md-4">
+            		    <input type="checkbox" class="cb_interest" name="interests" value="<?php echo $record['iid']; ?>"<?php if(in_array($record['iid'], $s_ints)){echo "checked";} ?>><?php echo $record['interest']; ?></input>
                     <br>
-                    </div>
-                <!--  </div>-->
-                <!--</div>-->
-                <div class="panel panel-default">
-                  <div class="panel-heading">Interest Area 2</div>
-                  <div class="panel-body">
-                    <input type="checkbox" name="fst" value="Security">Media</input>
-                    <br><br>
-                  </div>
-                </div>
-              </form>
+          		    <?php
+          		    $i_colcnt = 0;
+            		}
+          		}
+              ?>
             </div>
           </div>
+          <!--<div class="row">-->
+          <br><input id="btn_save_interests" type="button" value="SAVE">
+          <div id="status_div"></div>
+          <!--</div>-->
         </div>
-        <div class="panel panel-default">
-          <div class="panel-heading" role="tab" id="headingTwo">
-            <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-              <h4 class="panel-title">
-              <!--<a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">-->
-                Law Interests.
-              <!--</a>-->
-              </h4>
-            </a>
-          </div>
-          <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
-            <div class="panel-body">
-              <form action="action_page.php">
-              <input type="checkbox" name="fst" value="Networking">Law stuff</input>
-              <br>
-              <input type="checkbox" name="fst" value="Security">More law stuff....?</input> 
-              <br><br>
-              </form>
-            </div>
-          </div>
-        </div>
-        <div class="panel panel-default">
-          <div class="panel-heading" role="tab" id="headingThree">
-            <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-              <h4 class="panel-title">
-              <!--<a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">-->
-                Science and Technology Interests
-              <!--</a>-->
-              </h4>
-            </a>
-          </div>
-          <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
-            <div class="panel-body">
-              <form action="action_page.php">
-              <input type="checkbox" name="fst" value="Networking">Networking</input>
-              <br>
-              <input type="checkbox" name="fst" value="Security">Computer Security</input> 
-              <br><br>
-              </form>
-            </div>
-          </div>
-        </div>
-        <div class="panel panel-default">
-          <div class="panel-heading" role="tab" id="headingFour">
-            <a data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
-              <h4 class="panel-title">
-              <!--<a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">-->
-                Social Sciences Interests
-              <!--</a>-->
-              </h4>
-            </a>
-          </div>
-          <div id="collapseFour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFour">
-            <div class="panel-body">
-              <form action="action_page.php">
-              <input type="checkbox" name="fst" value="Networking">Caribbean History</input>
-              <br>
-              <input type="checkbox" name="fst" value="Security">World History</input> 
-              <br>
-              <input type="checkbox" name="fst" value="Security">Psychology?</input>
-              <br><br>
-              </form>
-            </div>
-          </div>
-        </div>
-        
-              <!--<input type="submit">-->
-              <input type="button" onclick="alert('Hello World!')" value="save?">
-       </div>
+      </div>
        
     </div><!--/col-span-9-->
     
@@ -201,5 +175,9 @@
 	<!-- script references -->
 		<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
 		<script src="js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="js/interests.js"></script>
 	</body>
 </html>
+<?php
+}
+?>

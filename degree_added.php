@@ -35,7 +35,7 @@
 
     if($result)
 		{
-			include 'worksheet.php';
+			?><script type="text/javascript"> window.location="worksheet.php";</script><?php
 		}
 	
 	//header( 'Location: http://localhost/capstone/dashboard.html' ) ;

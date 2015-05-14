@@ -1,21 +1,5 @@
 <?php include 'function.php';
-// session_start();
-// $stid = $_SESSION['stid'];
-// $interests = $_POST['interests'];
-// connect();
-// // $query = 'UPDATE student SET interests="'+$interests+'" where stid=0';
-// $query = 'UPDATE student SET interests="'.$interests.'" where stid='.$stid;
-// $result = mysql_query($query);
-// echo $result;
-// if ($result) 
-// {
-// 	//include("Location: dashboard.php"); /* Redirect browser */
-// 	//exit();
-// // 	$_SESSION["stid"]=$id;
-// // 	$_SESSION["fname"]=$Fname;
-// // 	$_SESSION["lname"]=$lname;
-//     echo $result;                   //NEED TO HANDLE FAILED UPDATE SCENARIOS...what is $result on success/failure
-// }
+
 
 session_start();
 if (!isset($_SESSION['stid']) || !isset($_POST['interests'])){
@@ -49,19 +33,6 @@ if (!isset($_SESSION['stid']) || !isset($_POST['interests'])){
 //         echo $result;                   //NEED TO HANDLE FAILED UPDATE SCENARIOS...what is $result on success/failure
 //     }
 // }
-// // connect();
-// // $query = 'UPDATE student SET interests="'+$interests+'" where stid=0';
-// $query = 'UPDATE student SET interests="'.$interests.'" where stid='.$stid;
-// $result = mysql_query($query);
-// echo $result;
-// if ($result) 
-// {
-// 	//include("Location: dashboard.php"); /* Redirect browser */
-// 	//exit();
-// // 	$_SESSION["stid"]=$id;
-// // 	$_SESSION["fname"]=$Fname;
-// // 	$_SESSION["lname"]=$lname;
-//     echo $result;                   //NEED TO HANDLE FAILED UPDATE SCENARIOS...what is $result on success/failure
-// }
+
 
 ?>

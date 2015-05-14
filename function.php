@@ -2813,4 +2813,11 @@
 	function parse_interests($str_interest){
 		return explode(",", $str_interest);
 	}
+	
+	// Queries database for courses matching interest specified
+	//  by $iid in semester $sem, and returns result set
+	function query_icourses_sem($iid, $sem){
+		$myData = mysql_query("SELECT courses.c_code as c_code, c_name, c_level, c_descrip, semester, creditnum, dept FROM courses JOIN course_interests ON courses.c_code=course_interests.c_code WHERE iid=".$iid." AND semester=".$sem);
+		return $myData;
+	}
 ?>	

@@ -248,8 +248,52 @@ else
 			  <p style="color: blue">By setting <a href="interests.php">your interest(s)</a>, 
 			  we are better able to suggest elective courses.</p><p style="color: red">Use these courses to add to your credit count.</p>
               <div class="controls">
-			  <b><?php echo "Level II Courses";?></b><?php electiveslevel2();?><b><?php echo "Level III Courses";?></b><?php electiveslevel3();?></br>
-					</br>
+
+			  <!--<b>?php echo "Level II Courses";?></b>?php electiveslevel2();?><b>?php echo "Level III Courses";?></b>?php electiveslevel3();?></br>-->
+					<!--</br>-->
+
+        <table style="width: 100%" >
+        <tr>
+          <td style="text-align: center"><b>Semester I</b></td>
+          <td style="text-align: center"><b>Semester II</b></td>
+        </tr>
+        <tr>
+          <td>
+          <?php
+          // Get student's interests
+          $myData = mysql_query("SELECT interests FROM student WHERE stid=".$_SESSION['stid']);
+          $res = mysql_fetch_array($myData);
+          $s_ints = parse_interests($res['interests']);   // $s_ints now holds array of iid's
+          foreach($s_ints as $i){             // for each iid...
+            $res = query_icourses_sem($i, 1);   // ...return result set of courses matching iid for given semester
+            if($row = mysql_fetch_array($res)){       // ...use the first one
+          ?>
+            <input type="checkbox" name="boxes[]" value="<?php echo $row['c_code']; ?>"><a href=""><?php echo $row['c_code']; ?></a></input><br>
+          <?php
+            }
+          }
+          ?>
+          </td>
+          <td>
+          <?php
+          // Get student's interests
+          $myData = mysql_query("SELECT interests FROM student WHERE stid=".$_SESSION['stid']);
+          $res = mysql_fetch_array($myData);
+          $s_ints = parse_interests($res['interests']);   // $s_ints now holds array of iid's
+          foreach($s_ints as $i){             // for each iid...
+            $res = query_icourses_sem($i, 2);   // ...return result set of courses matching iid for given semester
+            if($row = mysql_fetch_array($res)){       // ...use the first one
+          ?>
+            <input type="checkbox" name="boxes[]" value="<?php echo $row['c_code']; ?>"><a href=""><?php echo $row['c_code']; ?></a></input><br>
+          <?php
+            }
+          }
+          ?>
+          </td>
+        </tr>
+        
+        </table></br>
+
               </div>
             </div>   
       

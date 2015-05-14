@@ -1,6 +1,7 @@
 <?php
 	include_once 'function.php';
 	connect();
+	  $_SESSION['req'] = array();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -21,7 +22,6 @@
 								<tr>
 								<td style="text-align: center"><b>Semester I </b></td>
 								<td style="text-align: center"><b>Semester II</b></td>
-								<td style="text-align: center"><b>Prerequisites</b></td>
 								</tr>
 								<tr>
 								<td>
@@ -30,7 +30,7 @@
 								$code=array();
 								while($record2 = mysql_fetch_array($myData2)){
 									$unique = $_SESSION['unique'];
-									echo '<input type="checkbox" id="semester1" value="'.$record2['c_code'].'" onClick="checkboxes1();"> <a name="'.$unique.'" onmouseover="enterShow(this)" onmouseout="exitHide(this)">'.$record2['c_code'].'</a><div id="'.$unique.'" style ="visibility:hidden; display:inline;"> '.$record2['c_name'].'</div></br>';
+									echo '<input name="boxes[]" type="checkbox" id="semester1" value="'.$record2['c_code'].'" onClick="checkboxes1();"> <a name="'.$unique.'" onmouseover="enterShow(this)" onmouseout="exitHide(this)">'.$record2['c_code'].'</a><div id="'.$unique.'" style ="visibility:hidden; display:inline;"> '.$record2['c_name'].'</div></br>';
 									$code[] = $record2['c_code'];
 									$coursename = $record2['c_name'];
 									$unique = $unique + 1;
@@ -44,7 +44,7 @@
 								<?php 
 								while($record3 = mysql_fetch_array($myData3)){
 									$unique = $_SESSION['unique'];
-									echo '<input type="checkbox" id="semester2" value="'.$record3['c_code'].'" onClick="checkboxes1();"> <a name="'.$unique.'" onmouseover="enterShow(this)" onmouseout="exitHide(this)">'.$record3['c_code'].'</a><div id="'.$unique.'" style ="visibility:hidden; display:inline;"> '.$record3['c_name'].'</div></br>'; 
+									echo '<input name="boxes[]" type="checkbox" id="semester2" value="'.$record3['c_code'].'" onClick="checkboxes1();"> <a name="'.$unique.'" onmouseover="enterShow(this)" onmouseout="exitHide(this)">'.$record3['c_code'].'</a><div id="'.$unique.'" style ="visibility:hidden; display:inline;"> '.$record3['c_name'].'</div></br>'; 
 									$course = $record3['creditnum'];
 									$code[] = $record3['c_code'];
 									$coursename = $record3['c_name'];
@@ -56,33 +56,15 @@
 								</td><?php
 								array_push($_SESSION['code'],$code);
 								$array = $_SESSION['code'];
-								
-								?>
-								<td><?php
+		
 											foreach($array as $spot){
-												foreach($spot as $boxValue){?>
-												<div class="panel panel-default">
-												<div class="panel-heading">
-												<div class="panel-title">
-													<strong><?php print_r($boxValue);?></strong>
-													</div>
-													</div>
-													</div>
-									
-										<div class="panel-body">										
-											<?php $myData7 = mysql_query("SELECT distinct * FROM prereq WHERE c_code='$boxValue'");
-												while($record7 = mysql_fetch_array($myData7)){
-													echo '<p style="display: inline-block" value="'.$record7['prereq_code'].'"> '.$record7['prereq_code'].'</p>, ';
-												}?>
-												</div>
-												<?php
+												foreach($spot as $boxValue){
+													if(!(in_array($boxValue,$_SESSION['req']))){
+														array_push($_SESSION['req'],$boxValue);
+													}
+												}
 											}
-											}
-										?>
-										</td>
-								
-								<div style="float: right"><b><a href="#" data-toggle="modal" data-target="#t_and_c_m"> Get Pre-requisites</a></b></div>
-								<?php
+										
 									$id = $_SESSION["stid"];
 									$myData6 = mysql_query("SELECT status FROM student WHERE stid='$id'");
 									while($record6 = mysql_fetch_array($myData6)){

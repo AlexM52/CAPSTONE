@@ -74,7 +74,66 @@ else
 			</div> 
       
     </div><!-- /span-3 -->
-    <div class="col-sm-9" style="float: right;  margin-right: -50px">
+	
+	<div class="modal fade" id="t_and_c_m" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		  <div class="modal-dialog modal-lg">
+			<div class="modal-content">
+			  <div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+				<h4 class="modal-title" id="myModalLabel" style="color: blue" align="center"><strong>Pre-requisites</strong></h4>
+			  </div>
+			  <div class="modal-body">
+					<form method="post" action="pre-req_lookup.php">
+						<div class="form-group">
+							<label>Lookup</label></br>
+								Course Code: <input class="form-control" name="search" required />
+							
+								<button type="submit" class="btn btn-default" align="right">Go</button></br>
+								</a>
+						</div>
+					</form>
+					<?php echo $_SESSION['prereq']; ?>
+					
+				
+          <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+            <div class="panel-body">
+                <div class="container">
+                    <input type="checkbox" name="fst" value="Networking">Foreign Languages</input>
+                    <br>
+                    <input type="checkbox" name="fst" value="Security">Education</input>
+                    <br>
+                 </div>
+			</div>
+		</div>
+							 
+			<div class="panel-body"><?php 
+				$req = $_SESSION['req'];
+					foreach($req as $key){?>
+						<div class="panel panel-default">
+							<div class="panel-heading">
+								<div class="panel-title">
+									<strong><?php print_r($key);?></strong>
+								</div>
+							</div>
+						</div><?php
+
+						$myData7 = mysql_query("SELECT distinct * FROM prereq WHERE c_code='$key'");
+						if($record7 = mysql_fetch_array($myData7)){
+							while($record7 = mysql_fetch_array($myData7)){
+								echo('<p style="display: inline-block" value="'.$record7['prereq_code'].'"> '.$record7['prereq_code'].'</p>, ');
+								}
+							}
+							else{
+								echo "No pre-requisite(s).";
+							}
+						}?>
+					</div>
+				</div>
+			</div><!-- /.modal-content -->
+		</div><!-- /.modal-dialog -->
+	</div><!-- /.modal -->
+		
+    <div class="col-sm-8" style="float: right;  position:relative;">
      <div style="float: right"><a align="right" class="navbar-brand" href="index.php"><img style="width:250px; height:80px" src="pictures/logo_1570017_web.jpg" alt=""></a></div>  
       <!-- column 2 --> 
        <h3><i class="glyphicon glyphicon-education"></i> Here are some suggestions.</h3>
@@ -112,6 +171,7 @@ else
             <i class="glyphicon glyphicon-wrench pull-right"></i>
       <p>Please take into consideration that these are merely suggestions. You have the right to accept or decline our advice. In addition, pay 
       keen attention to the credit limits for each semester.</p>
+	   <div style="float: right"><b><a href="#" data-toggle="modal" data-target="#t_and_c_m"> Get Pre-requisites</a></b></div></br>
           </div>
         </div>
         <div class="panel-body">
@@ -188,13 +248,9 @@ else
 			  <p style="color: blue">By setting <a href="interests.php">your interest(s)</a>, we are better able to suggest elective courses.</p>
         <p style="color: red">Use these courses to add to your credit count.</p>
               <div class="controls">
-        <table style="width: 100%" >
-        <tr>
-          <td style="text-align: center"><b>Semester I</b></td>
-          <td style="text-align: center"><b>Semester II</b></td>
-        </tr>
-        
-        </table>
+        <div class="controls">
+			  <b><?php echo "Level II Courses";?></b><?php electiveslevel2();?><b><?php echo "Level III Courses";?></b><?php electiveslevel3();?></br>
+					</br>
               </div>
             </div></br>  
       
@@ -225,12 +281,13 @@ else
           </form>
 		  
   </div>
+   <footer class="text-center">CAPSTONE Project Student Course Advisor</footer>
   </div>
   </div>
   </div>
   </body>
   
-  <footer class="text-center">CAPSTONE Project Student Course Advisor</footer>
+ 
   <!-- script references -->
     <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>

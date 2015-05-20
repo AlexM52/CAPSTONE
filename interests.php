@@ -4,7 +4,7 @@
   if (!isset($_SESSION['stid'])){
 //   if (false){
     ?>
-    <script type="text/javascript">window.location="/";</script>
+    <script type="text/javascript">window.location="/Capstone";</script>
     <?php
   }else{
 ?>

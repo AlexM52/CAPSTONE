@@ -5,7 +5,8 @@
   if (!isset($_SESSION["stid"]))
 {
     ?><script> alert("I'm sorry, you did not login");</script><?php
-	echo "<meta http-equiv=\"refresh\" content=\"0; url=http://146.148.57.189/Capstone/\">";
+// 	echo "<meta http-equiv=\"refresh\" content=\"0; url=http://146.148.57.189/Capstone/\">";
+  echo '<script type="text/javascript">window.location="/Capstone";</script>';
 }
 else
 {

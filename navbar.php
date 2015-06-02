@@ -24,6 +24,8 @@
                     <li>
                         <a href="features.php">Features</a>
                     </li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right"><!-- Moves user dropdown to right end of navbar -->
                     <li class="dropdown">
                       <a class="dropdown-toggle" role="button" data-toggle="dropdown" href="#">
                         <i class="glyphicon glyphicon-user"></i> <?php echo $_SESSION["fname"]?>  <?php echo $_SESSION["lname"];?><span class="caret"></span></a>
